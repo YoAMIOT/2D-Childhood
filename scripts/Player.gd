@@ -71,7 +71,9 @@ func _physics_process(delta):
 ###Function to animate the Animated Sprite by testing what the player is doing###
 func animate():
 	if isWalking == false:
-		if lastDir == "down":
+		if isRunning:
+			$AnimatedSprite.animation = "idle_impatient";
+		elif lastDir == "down":
 			$AnimatedSprite.animation = "idle_downward";
 		elif lastDir == "up":
 			$AnimatedSprite.animation = "idle_upward";
@@ -102,4 +104,7 @@ func animate():
 					$AnimatedSprite.animation = "left_run";
 
 		elif velocity == Vector2(0, 0):
-			$AnimatedSprite.animation = "idle_downward";
+			if isRunning == false:
+				$AnimatedSprite.animation = "idle_downward";
+			if isRunning == true:
+				$AnimatedSprite.animation = "idle_impatient";
