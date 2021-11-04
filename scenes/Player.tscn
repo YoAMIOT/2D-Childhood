@@ -1,0 +1,94 @@
+[gd_scene load_steps=25 format=2]
+
+[ext_resource path="res://ressources/player/idle/idle_right.png" type="Texture" id=1]
+[ext_resource path="res://ressources/player/idle/idle_left.png" type="Texture" id=2]
+[ext_resource path="res://ressources/player/idle/idle_upward.png" type="Texture" id=3]
+[ext_resource path="res://ressources/player/idle/idle_downward.png" type="Texture" id=4]
+[ext_resource path="res://ressources/player/downward_walk/downward_walk4.png" type="Texture" id=5]
+[ext_resource path="res://ressources/player/downward_walk/downward_walk2.png" type="Texture" id=6]
+[ext_resource path="res://ressources/player/upward_walk/upward_walk3.png" type="Texture" id=7]
+[ext_resource path="res://ressources/player/right_walk/right_walk2.png" type="Texture" id=8]
+[ext_resource path="res://ressources/player/right_walk/right_walk4.png" type="Texture" id=9]
+[ext_resource path="res://ressources/player/left_walk/left_walk3.png" type="Texture" id=10]
+[ext_resource path="res://ressources/player/upward_walk/upward_walk1.png" type="Texture" id=11]
+[ext_resource path="res://ressources/player/downward_walk/downward_walk3.png" type="Texture" id=12]
+[ext_resource path="res://ressources/player/right_walk/right_walk1.png" type="Texture" id=13]
+[ext_resource path="res://ressources/player/left_walk/left_walk1.png" type="Texture" id=14]
+[ext_resource path="res://ressources/player/downward_walk/downward_walk1.png" type="Texture" id=15]
+[ext_resource path="res://ressources/player/left_walk/left_walk4.png" type="Texture" id=16]
+[ext_resource path="res://ressources/player/right_walk/right_walk3.png" type="Texture" id=17]
+[ext_resource path="res://ressources/player/left_walk/left_walk2.png" type="Texture" id=18]
+[ext_resource path="res://ressources/player/upward_walk/upward_walk2.png" type="Texture" id=19]
+[ext_resource path="res://ressources/player/upward_walk/upward_walk4.png" type="Texture" id=20]
+[ext_resource path="res://scripts/Player.gd" type="Script" id=21]
+[ext_resource path="res://ressources/player/exemple.png" type="Texture" id=22]
+
+[sub_resource type="SpriteFrames" id=1]
+animations = [ {
+"frames": [ ExtResource( 2 ) ],
+"loop": true,
+"name": "idle_left",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 14 ), ExtResource( 18 ), ExtResource( 10 ), ExtResource( 16 ) ],
+"loop": true,
+"name": "left_walk",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 13 ), ExtResource( 8 ), ExtResource( 17 ), ExtResource( 9 ) ],
+"loop": true,
+"name": "right_walk",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 4 ) ],
+"loop": true,
+"name": "idle_downward",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 3 ) ],
+"loop": true,
+"name": "idle_upward",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 1 ) ],
+"loop": true,
+"name": "idle_right",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 11 ), ExtResource( 19 ), ExtResource( 7 ), ExtResource( 20 ) ],
+"loop": true,
+"name": "upward_walk",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 15 ), ExtResource( 6 ), ExtResource( 12 ), ExtResource( 5 ) ],
+"loop": true,
+"name": "downward_walk",
+"speed": 5.0
+} ]
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 8.58986, 11.811 )
+
+[node name="Node2D" type="Node2D"]
+
+[node name="exemple" type="Sprite" parent="."]
+position = Vector2( -15.5076, 41.2853 )
+z_index = -1
+texture = ExtResource( 22 )
+
+[node name="Player" type="KinematicBody2D" parent="."]
+script = ExtResource( 21 )
+
+[node name="Camera2D" type="Camera2D" parent="Player"]
+current = true
+zoom = Vector2( 0.25, 0.25 )
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="Player"]
+frames = SubResource( 1 )
+animation = "downward_walk"
+frame = 2
+playing = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
+position = Vector2( 0.5, 0 )
+shape = SubResource( 2 )
