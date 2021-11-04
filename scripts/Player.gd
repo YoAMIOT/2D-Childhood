@@ -2,10 +2,12 @@ extends KinematicBody2D
 
 ###Variables###
 var walkSpeed : int = 50;
+var runSpeed : int = walkSpeed * 2;
 var velocity : Vector2 = Vector2.ZERO;
 var isWalking : bool = false;
 var lastDir : String = "down";
 var actualDir : String = "";
+var isRunning : bool = false;
 
 
 
@@ -44,9 +46,16 @@ func getInput():
 	if Input.is_action_just_released("up"):
 		isWalking = false;
 		lastDir = "up";
+	
+	if Input.is_action_pressed("run"):
+		isRunning = true;
+	if Input.is_action_just_released("run"):
+		isRunning = false;
 
-	if isWalking == true:
+	if isWalking == true and isRunning == false:
 		velocity = velocity.normalized() * walkSpeed;
+	elif isWalking == true and isRunning == true:
+		velocity = velocity.normalized() * runSpeed;
 
 
 
