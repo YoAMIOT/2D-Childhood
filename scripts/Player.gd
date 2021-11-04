@@ -80,11 +80,21 @@ func animate():
 		elif lastDir == "left":
 			$AnimatedSprite.animation = "idle_left";
 	elif isWalking == true:
-		if actualDir == "down":
-			$AnimatedSprite.animation = "downward_walk";
-		elif actualDir == "up":
-			$AnimatedSprite.animation = "upward_walk";
-		elif actualDir == "right":
-			$AnimatedSprite.animation = "right_walk";
-		elif actualDir == "left":
-			$AnimatedSprite.animation = "left_walk";
+		if isRunning == false:
+			if actualDir == "down":
+				$AnimatedSprite.animation = "downward_walk";
+			elif actualDir == "up":
+				$AnimatedSprite.animation = "upward_walk";
+			elif actualDir == "right":
+				$AnimatedSprite.animation = "right_walk";
+			elif actualDir == "left":
+				$AnimatedSprite.animation = "left_walk";
+		elif isRunning == true:
+			if actualDir == "down":
+				$AnimatedSprite.animation = "downward_run";
+			elif actualDir == "up":
+				$AnimatedSprite.animation = "upward_run";
+			elif actualDir == "right":
+				$AnimatedSprite.animation = "right_run";
+			elif actualDir == "left":
+				$AnimatedSprite.animation = "left_run";
