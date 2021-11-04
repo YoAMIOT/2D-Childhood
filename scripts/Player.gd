@@ -46,7 +46,7 @@ func getInput():
 	if Input.is_action_just_released("up"):
 		isWalking = false;
 		lastDir = "up";
-	
+
 	if Input.is_action_pressed("run"):
 		isRunning = true;
 	if Input.is_action_just_released("run"):
@@ -79,22 +79,27 @@ func animate():
 			$AnimatedSprite.animation = "idle_right";
 		elif lastDir == "left":
 			$AnimatedSprite.animation = "idle_left";
+
 	elif isWalking == true:
-		if isRunning == false:
-			if actualDir == "down":
-				$AnimatedSprite.animation = "downward_walk";
-			elif actualDir == "up":
-				$AnimatedSprite.animation = "upward_walk";
-			elif actualDir == "right":
-				$AnimatedSprite.animation = "right_walk";
-			elif actualDir == "left":
-				$AnimatedSprite.animation = "left_walk";
-		elif isRunning == true:
-			if actualDir == "down":
-				$AnimatedSprite.animation = "downward_run";
-			elif actualDir == "up":
-				$AnimatedSprite.animation = "upward_run";
-			elif actualDir == "right":
-				$AnimatedSprite.animation = "right_run";
-			elif actualDir == "left":
-				$AnimatedSprite.animation = "left_run";
+		if velocity != Vector2(0, 0):
+			if isRunning == false:
+				if actualDir == "down":
+					$AnimatedSprite.animation = "downward_walk";
+				elif actualDir == "up":
+					$AnimatedSprite.animation = "upward_walk";
+				elif actualDir == "right":
+					$AnimatedSprite.animation = "right_walk";
+				elif actualDir == "left":
+					$AnimatedSprite.animation = "left_walk";
+			elif isRunning == true:
+				if actualDir == "down":
+					$AnimatedSprite.animation = "downward_run";
+				elif actualDir == "up":
+					$AnimatedSprite.animation = "upward_run";
+				elif actualDir == "right":
+					$AnimatedSprite.animation = "right_run";
+				elif actualDir == "left":
+					$AnimatedSprite.animation = "left_run";
+
+		elif velocity == Vector2(0, 0):
+			$AnimatedSprite.animation = "idle_downward";
