@@ -13,23 +13,7 @@ var isRunning : bool = false;
 
 ###Function to get the input of the player###
 func getInput():
-	velocity = Vector2.ZERO
-
-	if Input.is_action_pressed("right"):
-		velocity.x += 1;
-		isWalking = true;
-		actualDir = "right";
-	if Input.is_action_just_released("right"):
-		isWalking = false;
-		lastDir = "right";
-
-	if Input.is_action_pressed("left"):
-		velocity.x -= 1;
-		isWalking = true;
-		actualDir = "left";
-	if Input.is_action_just_released("left"):
-		isWalking = false;
-		lastDir = "left";
+	velocity = Vector2.ZERO;
 
 	if Input.is_action_pressed("down"):
 		velocity.y += 1;
@@ -46,6 +30,22 @@ func getInput():
 	if Input.is_action_just_released("up"):
 		isWalking = false;
 		lastDir = "up";
+
+	if Input.is_action_pressed("right"):
+		velocity.x += 1;
+		isWalking = true;
+		actualDir = "right";
+	if Input.is_action_just_released("right"):
+		isWalking = false;
+		lastDir = "right";
+
+	if Input.is_action_pressed("left"):
+		velocity.x -= 1;
+		isWalking = true;
+		actualDir = "left";
+	if Input.is_action_just_released("left"):
+		isWalking = false;
+		lastDir = "left";
 
 	if Input.is_action_pressed("run"):
 		isRunning = true;
