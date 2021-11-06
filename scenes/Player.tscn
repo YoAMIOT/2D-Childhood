@@ -186,6 +186,5 @@ animation = "idle_downward"
 playing = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-visible = false
 position = Vector2( 0.5, 7 )
 shape = SubResource( 2 )
