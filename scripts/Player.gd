@@ -13,7 +13,7 @@ var actualDir : String = "down";
 #Bike Variables#
 var bikeSpeed : int = 10;
 var virtualRotation : int = 180;
-var bikeActualDir : String = "down"
+var bikeActualDir : String = "down";
 
 
 
@@ -115,6 +115,8 @@ func getInputOnBike():
 
 	if virtualRotation >= 360:
 		virtualRotation = 0;
+	if virtualRotation < 0:
+		virtualRotation = 330;
 
 	if virtualRotation == 0 or virtualRotation == 360:
 		bikeActualDir = "up";
