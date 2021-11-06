@@ -122,10 +122,36 @@ func animateOnFoot():
 
 ###Function to get the input of the player on bike###
 func getInputOnBike():
-	pass
+	velocity = Vector2.ZERO;
+
+	if Input.is_action_just_released("down"):
+		lastDir = "down";
+	if Input.is_action_just_released("up"):
+		lastDir = "up";
+	if Input.is_action_just_released("right"):
+		lastDir = "right";
+	if Input.is_action_just_released("left"):
+		lastDir = "left";
 
 
 
 ###Function to animate the Animated Sprite by testing what the player is doing on bike###
 func animateOnBike():
-	pass
+	if velocity == Vector2(0, 0):
+		if lastDir == "down":
+			$AnimatedSprite.animation = "bike_idle_downward";
+		elif lastDir == "up":
+			$AnimatedSprite.animation = "bike_idle_upward";
+		elif lastDir == "right":
+			$AnimatedSprite.animation = "bike_idle_right";
+		elif lastDir == "left":
+			$AnimatedSprite.animation = "bike_idle_left";
+	elif velocity != Vector2(0, 0):
+		if actualDir == "down":
+			$AnimatedSprite.animation = "bike_slow_pace_downward";
+		elif actualDir == "up":
+			$AnimatedSprite.animation = "bike_slow_pace_upward";
+		elif actualDir == "right":
+			$AnimatedSprite.animation = "bike_slow_pace_right";
+		elif actualDir == "left":
+			$AnimatedSprite.animation = "bike_slow_pace_left";
