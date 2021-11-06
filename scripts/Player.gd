@@ -8,47 +8,65 @@ var isWalking : bool = false;
 var lastDir : String = "down";
 var actualDir : String = "";
 var isRunning : bool = false;
+var transportation : String = "walk";
 
 
 
-###Function to get the input of the player###
-func getInput():
+###Process Function###
+func _physics_process(delta):
+	if Input.is_action_just_pressed("select_transportation"):
+		if transportation == "walk":
+			transportation = "bike";
+		elif transportation == "bike":
+			transportation = "walk";
+
+	if transportation == "walk":
+		animateOnFoot();
+		getInputOnFoot();
+	elif transportation == "bike":
+		animateOnBike();
+		getInputOnBike();
+
+	velocity = move_and_slide(velocity);
+
+
+
+###Function to get the input of the player on foot###
+func getInputOnFoot():
 	velocity = Vector2.ZERO;
 
 	if Input.is_action_pressed("down"):
 		velocity.y += 1;
-		isWalking = true;
 		actualDir = "down";
-	if Input.is_action_just_released("down"):
-		isWalking = false;
-		lastDir = "down";
-
+		isWalking = true;
 	if Input.is_action_pressed("up"):
 		velocity.y -= 1
-		isWalking = true;
 		actualDir = "up";
-	if Input.is_action_just_released("up"):
-		isWalking = false;
-		lastDir = "up";
-
+		isWalking = true;
 	if Input.is_action_pressed("right"):
 		velocity.x += 1;
-		isWalking = true;
 		actualDir = "right";
-	if Input.is_action_just_released("right"):
-		isWalking = false;
-		lastDir = "right";
-
+		isWalking = true;
 	if Input.is_action_pressed("left"):
 		velocity.x -= 1;
-		isWalking = true;
 		actualDir = "left";
-	if Input.is_action_just_released("left"):
-		isWalking = false;
-		lastDir = "left";
+		isWalking = true;
 
 	if Input.is_action_pressed("run"):
 		isRunning = true;
+
+	if Input.is_action_just_released("down"):
+		isWalking = false;
+		lastDir = "down";
+	if Input.is_action_just_released("up"):
+		isWalking = false;
+		lastDir = "up";
+	if Input.is_action_just_released("right"):
+		isWalking = false;
+		lastDir = "right";
+	if Input.is_action_just_released("left"):
+		isWalking = false;
+		lastDir = "left";
 	if Input.is_action_just_released("run"):
 		isRunning = false;
 
@@ -59,17 +77,8 @@ func getInput():
 
 
 
-###Process Function###
-func _physics_process(delta):
-	getInput();
-	animate();
-
-	velocity = move_and_slide(velocity);
-
-
-
-###Function to animate the Animated Sprite by testing what the player is doing###
-func animate():
+###Function to animate the Animated Sprite by testing what the player is doing on foot###
+func animateOnFoot():
 	if isWalking == false:
 		if isRunning:
 			$AnimatedSprite.animation = "idle_impatient";
@@ -108,3 +117,15 @@ func animate():
 				$AnimatedSprite.animation = "idle_downward";
 			if isRunning == true:
 				$AnimatedSprite.animation = "idle_impatient";
+
+
+
+###Function to get the input of the player on bike###
+func getInputOnBike():
+	pass
+
+
+
+###Function to animate the Animated Sprite by testing what the player is doing on bike###
+func animateOnBike():
+	pass
