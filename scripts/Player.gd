@@ -153,9 +153,9 @@ func animateOnBike():
 		if bikeActualDir == "down":
 			$AnimatedSprite.animation = "bike_idle_downward";
 		elif bikeActualDir == "down_right":
-			$AnimatedSprite.animation = "bike_idle_downward";
+			$AnimatedSprite.animation = "bike_idle_downward_right";
 		elif bikeActualDir == "down_left":
-			$AnimatedSprite.animation = "bike_idle_downward";
+			$AnimatedSprite.animation = "bike_idle_downward_left";
 		#Up#
 		elif bikeActualDir == "up":
 			$AnimatedSprite.animation = "bike_idle_upward";
