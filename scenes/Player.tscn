@@ -1,4 +1,4 @@
-[gd_scene load_steps=66 format=2]
+[gd_scene load_steps=68 format=2]
 
 [ext_resource path="res://ressources/player/idle/idle_right.png" type="Texture" id=1]
 [ext_resource path="res://ressources/player/idle/idle_left.png" type="Texture" id=2]
@@ -63,9 +63,21 @@
 [ext_resource path="res://ressources/player/bike/downward_slow_pace/downward_slow_pace2.png" type="Texture" id=61]
 [ext_resource path="res://ressources/player/bike/idle/bike_idle_left_down.png" type="Texture" id=62]
 [ext_resource path="res://ressources/player/bike/idle/bike_idle_right_down.png" type="Texture" id=63]
+[ext_resource path="res://ressources/player/bike/idle/bike_idle_left_up.png" type="Texture" id=64]
+[ext_resource path="res://ressources/player/bike/idle/bike_idle_right_up.png" type="Texture" id=65]
 
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
+"frames": [ ExtResource( 64 ) ],
+"loop": true,
+"name": "bike_idle_left_up",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 65 ) ],
+"loop": true,
+"name": "bike_idle_right_up",
+"speed": 5.0
+}, {
 "frames": [ ExtResource( 2 ) ],
 "loop": true,
 "name": "idle_left",
@@ -86,14 +98,14 @@ animations = [ {
 "name": "bike_slow_pace_downward",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 45 ) ],
-"loop": true,
-"name": "bike_idle_right",
-"speed": 5.0
-}, {
 "frames": [ ExtResource( 11 ), ExtResource( 19 ), ExtResource( 7 ), ExtResource( 20 ) ],
 "loop": true,
 "name": "upward_walk",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 45 ) ],
+"loop": true,
+"name": "bike_idle_right",
 "speed": 5.0
 }, {
 "frames": [ ExtResource( 15 ), ExtResource( 6 ), ExtResource( 12 ), ExtResource( 5 ) ],
@@ -101,25 +113,25 @@ animations = [ {
 "name": "downward_walk",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 13 ), ExtResource( 8 ), ExtResource( 17 ), ExtResource( 9 ) ],
+"frames": [ ExtResource( 42 ) ],
 "loop": true,
-"name": "right_walk",
+"name": "bike_idle_upward",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 47 ), ExtResource( 57 ), ExtResource( 54 ), ExtResource( 53 ) ],
+"frames": [ ExtResource( 51 ), ExtResource( 46 ), ExtResource( 60 ), ExtResource( 48 ) ],
 "loop": true,
-"name": "bike_slow_pace_upward",
+"name": "bike_slow_pace_left",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 36 ), ExtResource( 35 ), ExtResource( 34 ), ExtResource( 37 ) ],
+"frames": [ ExtResource( 62 ) ],
 "loop": true,
-"name": "downward_run",
-"speed": 8.0
-}, {
-"frames": [ ExtResource( 3 ) ],
-"loop": true,
-"name": "idle_upward",
+"name": "bike_idle_left_down",
 "speed": 5.0
+}, {
+"frames": [ ExtResource( 41 ), ExtResource( 38 ), ExtResource( 39 ), ExtResource( 40 ) ],
+"loop": true,
+"name": "idle_impatient",
+"speed": 10.0
 }, {
 "frames": [ ExtResource( 56 ), ExtResource( 59 ), ExtResource( 50 ), ExtResource( 58 ) ],
 "loop": true,
@@ -131,34 +143,39 @@ animations = [ {
 "name": "bike_idle_downward",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 30 ), ExtResource( 29 ), ExtResource( 27 ), ExtResource( 28 ) ],
-"loop": true,
-"name": "left_run",
-"speed": 8.0
-}, {
-"frames": [ ExtResource( 41 ), ExtResource( 38 ), ExtResource( 39 ), ExtResource( 40 ) ],
-"loop": true,
-"name": "idle_impatient",
-"speed": 10.0
-}, {
-"frames": [ ExtResource( 14 ), ExtResource( 18 ), ExtResource( 10 ), ExtResource( 16 ) ],
-"loop": true,
-"name": "left_walk",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 42 ) ],
-"loop": true,
-"name": "bike_idle_upward",
-"speed": 5.0
-}, {
 "frames": [ ExtResource( 1 ) ],
 "loop": true,
 "name": "idle_right",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 51 ), ExtResource( 46 ), ExtResource( 60 ), ExtResource( 48 ) ],
+"frames": [ ExtResource( 63 ) ],
 "loop": true,
-"name": "bike_slow_pace_left",
+"name": "bike_idle_right_down",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 36 ), ExtResource( 35 ), ExtResource( 34 ), ExtResource( 37 ) ],
+"loop": true,
+"name": "downward_run",
+"speed": 8.0
+}, {
+"frames": [ ExtResource( 30 ), ExtResource( 29 ), ExtResource( 27 ), ExtResource( 28 ) ],
+"loop": true,
+"name": "left_run",
+"speed": 8.0
+}, {
+"frames": [ ExtResource( 13 ), ExtResource( 8 ), ExtResource( 17 ), ExtResource( 9 ) ],
+"loop": true,
+"name": "right_walk",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 47 ), ExtResource( 57 ), ExtResource( 54 ), ExtResource( 53 ) ],
+"loop": true,
+"name": "bike_slow_pace_upward",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 14 ), ExtResource( 18 ), ExtResource( 10 ), ExtResource( 16 ) ],
+"loop": true,
+"name": "left_walk",
 "speed": 5.0
 }, {
 "frames": [ ExtResource( 23 ), ExtResource( 24 ), ExtResource( 25 ), ExtResource( 26 ) ],
@@ -166,19 +183,14 @@ animations = [ {
 "name": "right_run",
 "speed": 8.0
 }, {
+"frames": [ ExtResource( 3 ) ],
+"loop": true,
+"name": "idle_upward",
+"speed": 5.0
+}, {
 "frames": [ ExtResource( 43 ) ],
 "loop": true,
 "name": "bike_idle_left",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 62 ) ],
-"loop": true,
-"name": "bike_idle_left_down",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 63 ) ],
-"loop": true,
-"name": "bike_idle_right_down",
 "speed": 5.0
 } ]
 
@@ -194,7 +206,7 @@ zoom = Vector2( 0.25, 0.25 )
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 frames = SubResource( 1 )
-animation = "bike_idle_left_down"
+animation = "bike_idle_right_up"
 playing = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

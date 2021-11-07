@@ -167,14 +167,14 @@ func animateOnBike():
 		elif bikeActualDir == "right":
 			$AnimatedSprite.animation = "bike_idle_right";
 		elif bikeActualDir == "right_up":
-			$AnimatedSprite.animation = "bike_idle_right";
+			$AnimatedSprite.animation = "bike_idle_right_up";
 		elif bikeActualDir == "right_down":
 			$AnimatedSprite.animation = "bike_idle_right_down";
 		#Left#
 		elif bikeActualDir == "left":
 			$AnimatedSprite.animation = "bike_idle_left";
 		elif bikeActualDir == "left_up":
-			$AnimatedSprite.animation = "bike_idle_left";
+			$AnimatedSprite.animation = "bike_idle_left_up";
 		elif bikeActualDir == "left_down":
 			$AnimatedSprite.animation = "bike_idle_left_down";
 
