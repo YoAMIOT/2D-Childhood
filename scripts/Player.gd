@@ -103,15 +103,22 @@ func animateOnFoot():
 func getInputOnBike():
 	velocity = Vector2.ZERO;
 
-	if Input.is_action_pressed("down"):
-		pass;
 	if Input.is_action_pressed("up"):
+		pass;
+	if Input.is_action_pressed("down"):
 		pass;
 	if Input.is_action_just_pressed("right"):
 		virtualRotation += 30;
 	if Input.is_action_just_pressed("left"):
 		virtualRotation -= 30;
 
+	setRotation();
+	velocity = velocity.normalized() * bikeSpeed;
+
+
+
+#Function to set the rotation of the bike#
+func setRotation():
 	if virtualRotation >= 360:
 		virtualRotation = 0;
 	if virtualRotation < 0:
@@ -141,8 +148,6 @@ func getInputOnBike():
 		bikeActualDir = "left_up";
 	elif virtualRotation == 330:
 		bikeActualDir = "up_left";
-
-	velocity = velocity.normalized() * bikeSpeed;
 
 
 
