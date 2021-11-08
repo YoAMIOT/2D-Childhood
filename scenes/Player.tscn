@@ -1,112 +1,146 @@
-[gd_scene load_steps=104 format=2]
+[gd_scene load_steps=128 format=2]
 
-[ext_resource path="res://ressources/player/idle/idle_right.png" type="Texture" id=1]
-[ext_resource path="res://ressources/player/idle/idle_left.png" type="Texture" id=2]
-[ext_resource path="res://ressources/player/idle/idle_upward.png" type="Texture" id=3]
-[ext_resource path="res://ressources/player/idle/idle_downward.png" type="Texture" id=4]
-[ext_resource path="res://ressources/player/downward_walk/downward_walk4.png" type="Texture" id=5]
-[ext_resource path="res://ressources/player/downward_walk/downward_walk2.png" type="Texture" id=6]
-[ext_resource path="res://ressources/player/upward_walk/upward_walk3.png" type="Texture" id=7]
-[ext_resource path="res://ressources/player/right_walk/right_walk2.png" type="Texture" id=8]
-[ext_resource path="res://ressources/player/right_walk/right_walk4.png" type="Texture" id=9]
-[ext_resource path="res://ressources/player/left_walk/left_walk3.png" type="Texture" id=10]
-[ext_resource path="res://ressources/player/upward_walk/upward_walk1.png" type="Texture" id=11]
-[ext_resource path="res://ressources/player/downward_walk/downward_walk3.png" type="Texture" id=12]
-[ext_resource path="res://ressources/player/right_walk/right_walk1.png" type="Texture" id=13]
-[ext_resource path="res://ressources/player/left_walk/left_walk1.png" type="Texture" id=14]
-[ext_resource path="res://ressources/player/downward_walk/downward_walk1.png" type="Texture" id=15]
-[ext_resource path="res://ressources/player/left_walk/left_walk4.png" type="Texture" id=16]
-[ext_resource path="res://ressources/player/right_walk/right_walk3.png" type="Texture" id=17]
-[ext_resource path="res://ressources/player/left_walk/left_walk2.png" type="Texture" id=18]
-[ext_resource path="res://ressources/player/upward_walk/upward_walk2.png" type="Texture" id=19]
-[ext_resource path="res://ressources/player/upward_walk/upward_walk4.png" type="Texture" id=20]
+[ext_resource path="res://ressources/player/foot/idle/idle_right.png" type="Texture" id=1]
+[ext_resource path="res://ressources/player/foot/idle/idle_left.png" type="Texture" id=2]
+[ext_resource path="res://ressources/player/foot/idle/idle_upward.png" type="Texture" id=3]
+[ext_resource path="res://ressources/player/foot/idle/idle_downward.png" type="Texture" id=4]
+[ext_resource path="res://ressources/player/foot/walk/downward_walk/downward_walk4.png" type="Texture" id=5]
+[ext_resource path="res://ressources/player/foot/walk/downward_walk/downward_walk2.png" type="Texture" id=6]
+[ext_resource path="res://ressources/player/foot/walk/upward_walk/upward_walk3.png" type="Texture" id=7]
+[ext_resource path="res://ressources/player/foot/walk/right_walk/right_walk2.png" type="Texture" id=8]
+[ext_resource path="res://ressources/player/foot/walk/right_walk/right_walk4.png" type="Texture" id=9]
+[ext_resource path="res://ressources/player/foot/walk/left_walk/left_walk3.png" type="Texture" id=10]
+[ext_resource path="res://ressources/player/foot/walk/upward_walk/upward_walk1.png" type="Texture" id=11]
+[ext_resource path="res://ressources/player/foot/walk/downward_walk/downward_walk3.png" type="Texture" id=12]
+[ext_resource path="res://ressources/player/foot/walk/right_walk/right_walk1.png" type="Texture" id=13]
+[ext_resource path="res://ressources/player/foot/walk/left_walk/left_walk1.png" type="Texture" id=14]
+[ext_resource path="res://ressources/player/foot/walk/downward_walk/downward_walk1.png" type="Texture" id=15]
+[ext_resource path="res://ressources/player/foot/walk/left_walk/left_walk4.png" type="Texture" id=16]
+[ext_resource path="res://ressources/player/foot/walk/right_walk/right_walk3.png" type="Texture" id=17]
+[ext_resource path="res://ressources/player/foot/walk/left_walk/left_walk2.png" type="Texture" id=18]
+[ext_resource path="res://ressources/player/foot/walk/upward_walk/upward_walk2.png" type="Texture" id=19]
+[ext_resource path="res://ressources/player/foot/walk/upward_walk/upward_walk4.png" type="Texture" id=20]
 [ext_resource path="res://scripts/Player.gd" type="Script" id=21]
-[ext_resource path="res://ressources/player/upward_run/upward_run3.png" type="Texture" id=22]
-[ext_resource path="res://ressources/player/right_run/right_run1.png" type="Texture" id=23]
-[ext_resource path="res://ressources/player/right_run/right_run2.png" type="Texture" id=24]
-[ext_resource path="res://ressources/player/right_run/right_run3.png" type="Texture" id=25]
-[ext_resource path="res://ressources/player/right_run/right_run4.png" type="Texture" id=26]
-[ext_resource path="res://ressources/player/left_run/left_run3.png" type="Texture" id=27]
-[ext_resource path="res://ressources/player/left_run/left_run4.png" type="Texture" id=28]
-[ext_resource path="res://ressources/player/left_run/left_run2.png" type="Texture" id=29]
-[ext_resource path="res://ressources/player/left_run/left_run1.png" type="Texture" id=30]
-[ext_resource path="res://ressources/player/upward_run/upward_run4.png" type="Texture" id=31]
-[ext_resource path="res://ressources/player/upward_run/upward_run2.png" type="Texture" id=32]
-[ext_resource path="res://ressources/player/upward_run/upward_run1.png" type="Texture" id=33]
-[ext_resource path="res://ressources/player/downward_run/downward_run3.png" type="Texture" id=34]
-[ext_resource path="res://ressources/player/downward_run/downward_run2.png" type="Texture" id=35]
-[ext_resource path="res://ressources/player/downward_run/downward_run1.png" type="Texture" id=36]
-[ext_resource path="res://ressources/player/downward_run/downward_run4.png" type="Texture" id=37]
-[ext_resource path="res://ressources/player/idle_impatient/idle_impatient2.png" type="Texture" id=38]
-[ext_resource path="res://ressources/player/idle_impatient/idle_impatient3.png" type="Texture" id=39]
-[ext_resource path="res://ressources/player/idle_impatient/idle_impatient4.png" type="Texture" id=40]
-[ext_resource path="res://ressources/player/idle_impatient/idle_impatient1.png" type="Texture" id=41]
-[ext_resource path="res://ressources/player/bike/idle/bike_idle_upward.png" type="Texture" id=42]
-[ext_resource path="res://ressources/player/bike/idle/bike_idle_left.png" type="Texture" id=43]
-[ext_resource path="res://ressources/player/bike/idle/bike_idle_downward.png" type="Texture" id=44]
-[ext_resource path="res://ressources/player/bike/idle/bike_idle_right.png" type="Texture" id=45]
-[ext_resource path="res://ressources/player/bike/left_slow_pace/left_slow_pace2.png" type="Texture" id=46]
-[ext_resource path="res://ressources/player/bike/upward_slow_pace/upward_slow_pace1.png" type="Texture" id=47]
-[ext_resource path="res://ressources/player/bike/left_slow_pace/left_slow_pace4.png" type="Texture" id=48]
-[ext_resource path="res://ressources/player/bike/downward_slow_pace/downward_slow_pace4.png" type="Texture" id=49]
-[ext_resource path="res://ressources/player/bike/right_slow_pace/right_slow_pace3.png" type="Texture" id=50]
-[ext_resource path="res://ressources/player/bike/left_slow_pace/left_slow_pace1.png" type="Texture" id=51]
-[ext_resource path="res://ressources/player/bike/downward_slow_pace/downward_slow_pace1.png" type="Texture" id=52]
-[ext_resource path="res://ressources/player/bike/upward_slow_pace/upward_slow_pace4.png" type="Texture" id=53]
-[ext_resource path="res://ressources/player/bike/upward_slow_pace/upward_slow_pace3.png" type="Texture" id=54]
-[ext_resource path="res://ressources/player/bike/downward_slow_pace/downward_slow_pace3.png" type="Texture" id=55]
-[ext_resource path="res://ressources/player/bike/right_slow_pace/right_slow_pace1.png" type="Texture" id=56]
-[ext_resource path="res://ressources/player/bike/upward_slow_pace/upward_slow_pace2.png" type="Texture" id=57]
-[ext_resource path="res://ressources/player/bike/right_slow_pace/right_slow_pace4.png" type="Texture" id=58]
-[ext_resource path="res://ressources/player/bike/right_slow_pace/right_slow_pace2.png" type="Texture" id=59]
-[ext_resource path="res://ressources/player/bike/left_slow_pace/left_slow_pace3.png" type="Texture" id=60]
-[ext_resource path="res://ressources/player/bike/downward_slow_pace/downward_slow_pace2.png" type="Texture" id=61]
-[ext_resource path="res://ressources/player/bike/idle/bike_idle_left_down.png" type="Texture" id=62]
-[ext_resource path="res://ressources/player/bike/idle/bike_idle_right_down.png" type="Texture" id=63]
-[ext_resource path="res://ressources/player/bike/idle/bike_idle_left_up.png" type="Texture" id=64]
-[ext_resource path="res://ressources/player/bike/idle/bike_idle_right_up.png" type="Texture" id=65]
-[ext_resource path="res://ressources/player/bike/idle/bike_idle_upward_right.png" type="Texture" id=66]
-[ext_resource path="res://ressources/player/bike/idle/bike_idle_upward_left.png" type="Texture" id=67]
-[ext_resource path="res://ressources/player/bike/idle/bike_idle_downward_right.png" type="Texture" id=68]
-[ext_resource path="res://ressources/player/bike/idle/bike_idle_downward_left.png" type="Texture" id=69]
-[ext_resource path="res://ressources/player/bike/upward_left_slow_pace/upward_left_slow_pace4.png" type="Texture" id=70]
-[ext_resource path="res://ressources/player/bike/upward_left_slow_pace/upward_left_slow_pace1.png" type="Texture" id=71]
-[ext_resource path="res://ressources/player/bike/upward_left_slow_pace/upward_left_slow_pace3.png" type="Texture" id=72]
-[ext_resource path="res://ressources/player/bike/upward_left_slow_pace/upward_left_slow_pace2.png" type="Texture" id=73]
-[ext_resource path="res://ressources/player/bike/upward_right_slow_pace/upward_right_slow_pace2.png" type="Texture" id=74]
-[ext_resource path="res://ressources/player/bike/upward_right_slow_pace/upward_right_slow_pace1.png" type="Texture" id=75]
-[ext_resource path="res://ressources/player/bike/upward_right_slow_pace/upward_right_slow_pace3.png" type="Texture" id=76]
-[ext_resource path="res://ressources/player/bike/upward_right_slow_pace/upward_right_slow_pace4.png" type="Texture" id=77]
-[ext_resource path="res://ressources/player/bike/downward_right_slow_pace/downward_right_slow_pace2.png" type="Texture" id=78]
-[ext_resource path="res://ressources/player/bike/downward_right_slow_pace/downward_right_slow_pace4.png" type="Texture" id=79]
-[ext_resource path="res://ressources/player/bike/downward_right_slow_pace/downward_right_slow_pace1.png" type="Texture" id=80]
-[ext_resource path="res://ressources/player/bike/downward_right_slow_pace/downward_right_slow_pace3.png" type="Texture" id=81]
-[ext_resource path="res://ressources/player/bike/downward_left_slow_pace/downward_left_slow_pace4.png" type="Texture" id=82]
-[ext_resource path="res://ressources/player/bike/downward_left_slow_pace/downward_left_slow_pace3.png" type="Texture" id=83]
-[ext_resource path="res://ressources/player/bike/downward_left_slow_pace/downward_left_slow_pace1.png" type="Texture" id=84]
-[ext_resource path="res://ressources/player/bike/downward_left_slow_pace/downward_left_slow_pace2.png" type="Texture" id=85]
-[ext_resource path="res://ressources/player/bike/right_downward_slow_pace/right_downward_slow_pace2.png" type="Texture" id=86]
-[ext_resource path="res://ressources/player/bike/right_downward_slow_pace/right_downward_slow_pace3.png" type="Texture" id=87]
-[ext_resource path="res://ressources/player/bike/right_downward_slow_pace/right_downward_slow_pace1.png" type="Texture" id=88]
-[ext_resource path="res://ressources/player/bike/right_downward_slow_pace/right_downward_slow_pace4.png" type="Texture" id=89]
-[ext_resource path="res://ressources/player/bike/left_downward_slow_pace/left_downward_slow_pace4.png" type="Texture" id=90]
-[ext_resource path="res://ressources/player/bike/left_downward_slow_pace/left_downward_slow_pace1.png" type="Texture" id=91]
-[ext_resource path="res://ressources/player/bike/left_downward_slow_pace/left_downward_slow_pace3.png" type="Texture" id=92]
-[ext_resource path="res://ressources/player/bike/left_downward_slow_pace/left_downward_slow_pace2.png" type="Texture" id=93]
-[ext_resource path="res://ressources/player/bike/right_upward_slow_pace/right_upward_slow_pace2.png" type="Texture" id=94]
-[ext_resource path="res://ressources/player/bike/right_upward_slow_pace/right_upward_slow_pace3.png" type="Texture" id=95]
-[ext_resource path="res://ressources/player/bike/right_upward_slow_pace/right_upward_slow_pace1.png" type="Texture" id=96]
-[ext_resource path="res://ressources/player/bike/right_upward_slow_pace/right_upward_slow_pace4.png" type="Texture" id=97]
-[ext_resource path="res://ressources/player/bike/left_upward_slow_pace/left_upward_slow_pace4.png" type="Texture" id=98]
-[ext_resource path="res://ressources/player/bike/left_upward_slow_pace/left_upward_slow_pace2.png" type="Texture" id=99]
-[ext_resource path="res://ressources/player/bike/left_upward_slow_pace/left_upward_slow_pace3.png" type="Texture" id=100]
-[ext_resource path="res://ressources/player/bike/left_upward_slow_pace/left_upward_slow_pace1.png" type="Texture" id=101]
+[ext_resource path="res://ressources/player/foot/run/upward_run/upward_run3.png" type="Texture" id=22]
+[ext_resource path="res://ressources/player/foot/run/right_run/right_run1.png" type="Texture" id=23]
+[ext_resource path="res://ressources/player/foot/run/right_run/right_run2.png" type="Texture" id=24]
+[ext_resource path="res://ressources/player/foot/run/right_run/right_run3.png" type="Texture" id=25]
+[ext_resource path="res://ressources/player/foot/run/right_run/right_run4.png" type="Texture" id=26]
+[ext_resource path="res://ressources/player/foot/run/left_run/left_run3.png" type="Texture" id=27]
+[ext_resource path="res://ressources/player/foot/run/left_run/left_run4.png" type="Texture" id=28]
+[ext_resource path="res://ressources/player/foot/run/left_run/left_run2.png" type="Texture" id=29]
+[ext_resource path="res://ressources/player/foot/run/left_run/left_run1.png" type="Texture" id=30]
+[ext_resource path="res://ressources/player/foot/run/upward_run/upward_run4.png" type="Texture" id=31]
+[ext_resource path="res://ressources/player/foot/run/upward_run/upward_run2.png" type="Texture" id=32]
+[ext_resource path="res://ressources/player/foot/run/upward_run/upward_run1.png" type="Texture" id=33]
+[ext_resource path="res://ressources/player/foot/run/downward_run/downward_run3.png" type="Texture" id=34]
+[ext_resource path="res://ressources/player/foot/run/downward_run/downward_run2.png" type="Texture" id=35]
+[ext_resource path="res://ressources/player/foot/run/downward_run/downward_run1.png" type="Texture" id=36]
+[ext_resource path="res://ressources/player/foot/run/downward_run/downward_run4.png" type="Texture" id=37]
+[ext_resource path="res://ressources/player/foot/idle/idle_impatient/idle_impatient2.png" type="Texture" id=38]
+[ext_resource path="res://ressources/player/foot/idle/idle_impatient/idle_impatient3.png" type="Texture" id=39]
+[ext_resource path="res://ressources/player/foot/idle/idle_impatient/idle_impatient4.png" type="Texture" id=40]
+[ext_resource path="res://ressources/player/foot/idle/idle_impatient/idle_impatient1.png" type="Texture" id=41]
+[ext_resource path="res://ressources/player/bike/idle/upward/bike_idle_upward.png" type="Texture" id=42]
+[ext_resource path="res://ressources/player/bike/idle/left/bike_idle_left.png" type="Texture" id=43]
+[ext_resource path="res://ressources/player/bike/idle/downward/bike_idle_downward.png" type="Texture" id=44]
+[ext_resource path="res://ressources/player/bike/idle/right/bike_idle_right.png" type="Texture" id=45]
+[ext_resource path="res://ressources/player/bike/slow_pace/left/left_slow_pace/left_slow_pace2.png" type="Texture" id=46]
+[ext_resource path="res://ressources/player/bike/slow_pace/upward/upward_slow_pace/upward_slow_pace1.png" type="Texture" id=47]
+[ext_resource path="res://ressources/player/bike/slow_pace/left/left_slow_pace/left_slow_pace4.png" type="Texture" id=48]
+[ext_resource path="res://ressources/player/bike/slow_pace/downward/downward_slow_pace/downward_slow_pace4.png" type="Texture" id=49]
+[ext_resource path="res://ressources/player/bike/slow_pace/right/right_slow_pace/right_slow_pace3.png" type="Texture" id=50]
+[ext_resource path="res://ressources/player/bike/slow_pace/left/left_slow_pace/left_slow_pace1.png" type="Texture" id=51]
+[ext_resource path="res://ressources/player/bike/slow_pace/downward/downward_slow_pace/downward_slow_pace1.png" type="Texture" id=52]
+[ext_resource path="res://ressources/player/bike/slow_pace/upward/upward_slow_pace/upward_slow_pace4.png" type="Texture" id=53]
+[ext_resource path="res://ressources/player/bike/slow_pace/upward/upward_slow_pace/upward_slow_pace3.png" type="Texture" id=54]
+[ext_resource path="res://ressources/player/bike/slow_pace/downward/downward_slow_pace/downward_slow_pace3.png" type="Texture" id=55]
+[ext_resource path="res://ressources/player/bike/slow_pace/right/right_slow_pace/right_slow_pace1.png" type="Texture" id=56]
+[ext_resource path="res://ressources/player/bike/slow_pace/upward/upward_slow_pace/upward_slow_pace2.png" type="Texture" id=57]
+[ext_resource path="res://ressources/player/bike/slow_pace/right/right_slow_pace/right_slow_pace4.png" type="Texture" id=58]
+[ext_resource path="res://ressources/player/bike/slow_pace/right/right_slow_pace/right_slow_pace2.png" type="Texture" id=59]
+[ext_resource path="res://ressources/player/bike/slow_pace/left/left_slow_pace/left_slow_pace3.png" type="Texture" id=60]
+[ext_resource path="res://ressources/player/bike/slow_pace/downward/downward_slow_pace/downward_slow_pace2.png" type="Texture" id=61]
+[ext_resource path="res://ressources/player/bike/idle/left/bike_idle_left_down.png" type="Texture" id=62]
+[ext_resource path="res://ressources/player/bike/idle/right/bike_idle_right_down.png" type="Texture" id=63]
+[ext_resource path="res://ressources/player/bike/idle/left/bike_idle_left_up.png" type="Texture" id=64]
+[ext_resource path="res://ressources/player/bike/idle/right/bike_idle_right_up.png" type="Texture" id=65]
+[ext_resource path="res://ressources/player/bike/idle/upward/bike_idle_upward_right.png" type="Texture" id=66]
+[ext_resource path="res://ressources/player/bike/idle/upward/bike_idle_upward_left.png" type="Texture" id=67]
+[ext_resource path="res://ressources/player/bike/idle/downward/bike_idle_downward_right.png" type="Texture" id=68]
+[ext_resource path="res://ressources/player/bike/idle/downward/bike_idle_downward_left.png" type="Texture" id=69]
+[ext_resource path="res://ressources/player/bike/slow_pace/upward/upward_left_slow_pace/upward_left_slow_pace4.png" type="Texture" id=70]
+[ext_resource path="res://ressources/player/bike/slow_pace/upward/upward_left_slow_pace/upward_left_slow_pace1.png" type="Texture" id=71]
+[ext_resource path="res://ressources/player/bike/slow_pace/upward/upward_left_slow_pace/upward_left_slow_pace3.png" type="Texture" id=72]
+[ext_resource path="res://ressources/player/bike/slow_pace/upward/upward_left_slow_pace/upward_left_slow_pace2.png" type="Texture" id=73]
+[ext_resource path="res://ressources/player/bike/slow_pace/upward/upward_right_slow_pace/upward_right_slow_pace2.png" type="Texture" id=74]
+[ext_resource path="res://ressources/player/bike/slow_pace/upward/upward_right_slow_pace/upward_right_slow_pace1.png" type="Texture" id=75]
+[ext_resource path="res://ressources/player/bike/slow_pace/upward/upward_right_slow_pace/upward_right_slow_pace3.png" type="Texture" id=76]
+[ext_resource path="res://ressources/player/bike/slow_pace/upward/upward_right_slow_pace/upward_right_slow_pace4.png" type="Texture" id=77]
+[ext_resource path="res://ressources/player/bike/slow_pace/downward/downward_right_slow_pace/downward_right_slow_pace2.png" type="Texture" id=78]
+[ext_resource path="res://ressources/player/bike/slow_pace/downward/downward_right_slow_pace/downward_right_slow_pace4.png" type="Texture" id=79]
+[ext_resource path="res://ressources/player/bike/slow_pace/downward/downward_right_slow_pace/downward_right_slow_pace1.png" type="Texture" id=80]
+[ext_resource path="res://ressources/player/bike/slow_pace/downward/downward_right_slow_pace/downward_right_slow_pace3.png" type="Texture" id=81]
+[ext_resource path="res://ressources/player/bike/slow_pace/downward/downward_left_slow_pace/downward_left_slow_pace4.png" type="Texture" id=82]
+[ext_resource path="res://ressources/player/bike/slow_pace/downward/downward_left_slow_pace/downward_left_slow_pace3.png" type="Texture" id=83]
+[ext_resource path="res://ressources/player/bike/slow_pace/downward/downward_left_slow_pace/downward_left_slow_pace1.png" type="Texture" id=84]
+[ext_resource path="res://ressources/player/bike/slow_pace/downward/downward_left_slow_pace/downward_left_slow_pace2.png" type="Texture" id=85]
+[ext_resource path="res://ressources/player/bike/slow_pace/right/right_downward_slow_pace/right_downward_slow_pace2.png" type="Texture" id=86]
+[ext_resource path="res://ressources/player/bike/slow_pace/right/right_downward_slow_pace/right_downward_slow_pace3.png" type="Texture" id=87]
+[ext_resource path="res://ressources/player/bike/slow_pace/right/right_downward_slow_pace/right_downward_slow_pace1.png" type="Texture" id=88]
+[ext_resource path="res://ressources/player/bike/slow_pace/right/right_downward_slow_pace/right_downward_slow_pace4.png" type="Texture" id=89]
+[ext_resource path="res://ressources/player/bike/slow_pace/left/left_downward_slow_pace/left_downward_slow_pace4.png" type="Texture" id=90]
+[ext_resource path="res://ressources/player/bike/slow_pace/left/left_downward_slow_pace/left_downward_slow_pace1.png" type="Texture" id=91]
+[ext_resource path="res://ressources/player/bike/slow_pace/left/left_downward_slow_pace/left_downward_slow_pace3.png" type="Texture" id=92]
+[ext_resource path="res://ressources/player/bike/slow_pace/left/left_downward_slow_pace/left_downward_slow_pace2.png" type="Texture" id=93]
+[ext_resource path="res://ressources/player/bike/slow_pace/right/right_upward_slow_pace/right_upward_slow_pace2.png" type="Texture" id=94]
+[ext_resource path="res://ressources/player/bike/slow_pace/right/right_upward_slow_pace/right_upward_slow_pace3.png" type="Texture" id=95]
+[ext_resource path="res://ressources/player/bike/slow_pace/right/right_upward_slow_pace/right_upward_slow_pace1.png" type="Texture" id=96]
+[ext_resource path="res://ressources/player/bike/slow_pace/right/right_upward_slow_pace/right_upward_slow_pace4.png" type="Texture" id=97]
+[ext_resource path="res://ressources/player/bike/slow_pace/left/left_upward_slow_pace/left_upward_slow_pace4.png" type="Texture" id=98]
+[ext_resource path="res://ressources/player/bike/slow_pace/left/left_upward_slow_pace/left_upward_slow_pace2.png" type="Texture" id=99]
+[ext_resource path="res://ressources/player/bike/slow_pace/left/left_upward_slow_pace/left_upward_slow_pace3.png" type="Texture" id=100]
+[ext_resource path="res://ressources/player/bike/slow_pace/left/left_upward_slow_pace/left_upward_slow_pace1.png" type="Texture" id=101]
+[ext_resource path="res://ressources/player/bike/braking/right/right_braking/right_braking2.png" type="Texture" id=102]
+[ext_resource path="res://ressources/player/bike/braking/right/right_downward_braking/right_downward_braking1.png" type="Texture" id=103]
+[ext_resource path="res://ressources/player/bike/braking/right/right_downward_braking/right_downward_braking2.png" type="Texture" id=104]
+[ext_resource path="res://ressources/player/bike/braking/right/right_braking/right_braking1.png" type="Texture" id=105]
+[ext_resource path="res://ressources/player/bike/braking/right/right_upward_braking/right_upward_braking2.png" type="Texture" id=106]
+[ext_resource path="res://ressources/player/bike/braking/right/right_upward_braking/right_upward_braking1.png" type="Texture" id=107]
+[ext_resource path="res://ressources/player/bike/braking/left/left_downward_braking/left_downward_braking2.png" type="Texture" id=108]
+[ext_resource path="res://ressources/player/bike/braking/left/left_downward_braking/left_downward_braking1.png" type="Texture" id=109]
+[ext_resource path="res://ressources/player/bike/braking/left/left_braking/left_braking1.png" type="Texture" id=110]
+[ext_resource path="res://ressources/player/bike/braking/left/left_braking/left_braking2.png" type="Texture" id=111]
+[ext_resource path="res://ressources/player/bike/braking/left/left_upward_braking/left_upward_braking2.png" type="Texture" id=112]
+[ext_resource path="res://ressources/player/bike/braking/left/left_upward_braking/left_upward_braking1.png" type="Texture" id=113]
+[ext_resource path="res://ressources/player/bike/braking/downward/downward_left_braking/downward_left_braking1.png" type="Texture" id=114]
+[ext_resource path="res://ressources/player/bike/braking/downward/downward_left_braking/downward_left_braking2.png" type="Texture" id=115]
+[ext_resource path="res://ressources/player/bike/braking/downward/downward_right_braking/downward_right_braking2.png" type="Texture" id=116]
+[ext_resource path="res://ressources/player/bike/braking/downward/downward_right_braking/downward_right_braking1.png" type="Texture" id=117]
+[ext_resource path="res://ressources/player/bike/braking/downward/downward_braking/downward_braking1.png" type="Texture" id=118]
+[ext_resource path="res://ressources/player/bike/braking/downward/downward_braking/downward_braking2.png" type="Texture" id=119]
+[ext_resource path="res://ressources/player/bike/braking/upward/upward_braking/upward_braking1.png" type="Texture" id=120]
+[ext_resource path="res://ressources/player/bike/braking/upward/upward_braking/upward_braking2.png" type="Texture" id=121]
+[ext_resource path="res://ressources/player/bike/braking/upward/upward_left_braking/upward_left_braking1.png" type="Texture" id=122]
+[ext_resource path="res://ressources/player/bike/braking/upward/upward_left_braking/upward_left_braking2.png" type="Texture" id=123]
+[ext_resource path="res://ressources/player/bike/braking/upward/upward_right_braking/upward_right_braking1.png" type="Texture" id=124]
+[ext_resource path="res://ressources/player/bike/braking/upward/upward_right_braking/upward_right_braking2.png" type="Texture" id=125]
 
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
+"frames": [ ExtResource( 107 ), ExtResource( 106 ) ],
+"loop": true,
+"name": "bike_braking_right_upward",
+"speed": 5.0
+}, {
 "frames": [ ExtResource( 75 ), ExtResource( 74 ), ExtResource( 76 ), ExtResource( 77 ) ],
 "loop": true,
 "name": "bike_slow_pace_upward_right",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 103 ), ExtResource( 104 ) ],
+"loop": true,
+"name": "bike_braking_right_downward",
 "speed": 5.0
 }, {
 "frames": [ ExtResource( 101 ), ExtResource( 99 ), ExtResource( 100 ), ExtResource( 98 ) ],
@@ -119,14 +153,34 @@ animations = [ {
 "name": "bike_slow_pace_upward_left",
 "speed": 5.0
 }, {
+"frames": [ ExtResource( 105 ), ExtResource( 102 ) ],
+"loop": true,
+"name": "bike_braking_right",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 110 ), ExtResource( 111 ) ],
+"loop": true,
+"name": "bike_braking_left",
+"speed": 5.0
+}, {
 "frames": [ ExtResource( 96 ), ExtResource( 94 ), ExtResource( 95 ), ExtResource( 97 ) ],
 "loop": true,
 "name": "bike_slow_pace_right_upward",
 "speed": 5.0
 }, {
+"frames": [ ExtResource( 109 ), ExtResource( 108 ) ],
+"loop": true,
+"name": "bike_braking_left_downward",
+"speed": 5.0
+}, {
 "frames": [ ExtResource( 80 ), ExtResource( 78 ), ExtResource( 81 ), ExtResource( 79 ) ],
 "loop": true,
 "name": "bike_slow_pace_downward_right",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 118 ), ExtResource( 119 ) ],
+"loop": true,
+"name": "bike_braking_downward",
 "speed": 5.0
 }, {
 "frames": [ ExtResource( 91 ), ExtResource( 93 ), ExtResource( 92 ), ExtResource( 90 ) ],
@@ -139,9 +193,39 @@ animations = [ {
 "name": "bike_slow_pace_downward_left",
 "speed": 5.0
 }, {
+"frames": [ ExtResource( 113 ), ExtResource( 112 ) ],
+"loop": true,
+"name": "bike_braking_left_upward",
+"speed": 5.0
+}, {
 "frames": [ ExtResource( 88 ), ExtResource( 86 ), ExtResource( 87 ), ExtResource( 89 ) ],
 "loop": true,
 "name": "bike_slow_pace_right_downward",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 114 ), ExtResource( 115 ) ],
+"loop": true,
+"name": "bike_braking_downward_left",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 117 ), ExtResource( 116 ) ],
+"loop": true,
+"name": "bike_braking_downward_right",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 122 ), ExtResource( 123 ) ],
+"loop": true,
+"name": "bike_braking_upward_left",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 120 ), ExtResource( 121 ) ],
+"loop": true,
+"name": "bike_braking_upward",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 124 ), ExtResource( 125 ) ],
+"loop": true,
+"name": "bike_braking_upward_right",
 "speed": 5.0
 }, {
 "frames": [ ExtResource( 43 ) ],
@@ -302,7 +386,7 @@ zoom = Vector2( 0.25, 0.25 )
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 frames = SubResource( 1 )
-animation = "bike_slow_pace_left_upward"
+animation = "bike_braking_upward_right"
 playing = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

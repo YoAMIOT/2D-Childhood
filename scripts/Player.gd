@@ -16,7 +16,7 @@ var virtualRotation : int = 180;
 var bikeActualDir : String = "down";
 var movingBackward : bool = false;
 var bikeAcceleration: float = 0.5;
-var bikeBrake : float = 0.8;
+var bikeBrake : float = 1.2;
 var bikeMaxSpeed : int = 120;
 var movingForward : bool = false;
 var isAccelerating: bool = false;
@@ -167,6 +167,11 @@ func getInputOnBike():
 		movingForward = false;
 
 	if Input.is_action_pressed("down"):
+		if movingForward == true:
+			if bikeSpeed > 0:
+				bikeSpeed -= bikeBrake;
+			elif bikeSpeed < 0:
+				bikeSpeed = 0;
 		if movingForward == false:
 			velocity = manageBikeDirection() * -1;
 			movingBackward = true;
@@ -283,8 +288,8 @@ func animateOnBike():
 		elif bikeActualDir == "left_down":
 			$AnimatedSprite.animation = "bike_idle_left_down";
 
-	elif velocity != Vector2(0, 0):
-		if movingBackward == false:
+	if movingForward == true:
+		if isAccelerating == true:
 			#Down#
 			if bikeActualDir == "down":
 				$AnimatedSprite.animation = "bike_slow_pace_downward";
@@ -313,32 +318,61 @@ func animateOnBike():
 				$AnimatedSprite.animation = "bike_slow_pace_left_upward";
 			elif bikeActualDir == "left_down":
 				$AnimatedSprite.animation = "bike_slow_pace_left_downward";
-		if movingBackward == true:
+		elif isAccelerating == false:
 			#Down#
 			if bikeActualDir == "down":
-				$AnimatedSprite.animation = "bike_idle_downward";
+				$AnimatedSprite.animation = "bike_braking_downward";
 			elif bikeActualDir == "down_right":
-				$AnimatedSprite.animation = "bike_idle_downward_right";
+				$AnimatedSprite.animation = "bike_braking_downward_right";
 			elif bikeActualDir == "down_left":
-				$AnimatedSprite.animation = "bike_idle_downward_left";
+				$AnimatedSprite.animation = "bike_braking_downward_left";
 			#Up#
 			elif bikeActualDir == "up":
-				$AnimatedSprite.animation = "bike_idle_upward";
+				$AnimatedSprite.animation = "bike_braking_upward";
 			elif bikeActualDir == "up_right":
-				$AnimatedSprite.animation = "bike_idle_upward_right";
+				$AnimatedSprite.animation = "bike_braking_upward_right";
 			elif bikeActualDir == "up_left":
-				$AnimatedSprite.animation = "bike_idle_upward_left";
+				$AnimatedSprite.animation = "bike_braking_upward_left";
 			#Right#
 			elif bikeActualDir == "right":
-				$AnimatedSprite.animation = "bike_idle_right";
+				$AnimatedSprite.animation = "bike_braking_right";
 			elif bikeActualDir == "right_up":
-				$AnimatedSprite.animation = "bike_idle_right_up";
+				$AnimatedSprite.animation = "bike_braking_right_upward";
 			elif bikeActualDir == "right_down":
-				$AnimatedSprite.animation = "bike_idle_right_down";
+				$AnimatedSprite.animation = "bike_braking_right_downward";
 			#Left#
 			elif bikeActualDir == "left":
-				$AnimatedSprite.animation = "bike_idle_left";
+				$AnimatedSprite.animation = "bike_braking_left";
 			elif bikeActualDir == "left_up":
-				$AnimatedSprite.animation = "bike_idle_left_up";
+				$AnimatedSprite.animation = "bike_braking_left_upward";
 			elif bikeActualDir == "left_down":
-				$AnimatedSprite.animation = "bike_idle_left_down";
+				$AnimatedSprite.animation = "bike_braking_left_downward";
+	if movingBackward == true:
+		#Down#
+		if bikeActualDir == "down":
+			$AnimatedSprite.animation = "bike_idle_downward";
+		elif bikeActualDir == "down_right":
+			$AnimatedSprite.animation = "bike_idle_downward_right";
+		elif bikeActualDir == "down_left":
+			$AnimatedSprite.animation = "bike_idle_downward_left";
+		#Up#
+		elif bikeActualDir == "up":
+			$AnimatedSprite.animation = "bike_idle_upward";
+		elif bikeActualDir == "up_right":
+			$AnimatedSprite.animation = "bike_idle_upward_right";
+		elif bikeActualDir == "up_left":
+			$AnimatedSprite.animation = "bike_idle_upward_left";
+		#Right#
+		elif bikeActualDir == "right":
+			$AnimatedSprite.animation = "bike_idle_right";
+		elif bikeActualDir == "right_up":
+			$AnimatedSprite.animation = "bike_idle_right_up";
+		elif bikeActualDir == "right_down":
+			$AnimatedSprite.animation = "bike_idle_right_down";
+		#Left#
+		elif bikeActualDir == "left":
+			$AnimatedSprite.animation = "bike_idle_left";
+		elif bikeActualDir == "left_up":
+			$AnimatedSprite.animation = "bike_idle_left_up";
+		elif bikeActualDir == "left_down":
+			$AnimatedSprite.animation = "bike_idle_left_down";
