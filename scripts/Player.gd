@@ -11,10 +11,16 @@ var isRunning : bool = false;
 var footActualDir : String = "down";
 
 #Bike Variables#
-var bikeSpeed : int = 50;
+var bikeSpeed : float = 0;
 var virtualRotation : int = 180;
 var bikeActualDir : String = "down";
 var movingBackward : bool = false;
+var bikeAcceleration: float = 0.5;
+var bikeBrake : float = 0.8;
+var bikeMaxSpeed : int = 120;
+var movingForward : bool = false;
+var isAccelerating: bool = false;
+var bikeFriction : float = 0.3;
 
 
 
@@ -141,17 +147,35 @@ func getInputOnBike():
 		setRotation();
 
 	if Input.is_action_pressed("up"):
+		isAccelerating = true;
+		if bikeSpeed <= bikeMaxSpeed:
+			bikeSpeed += bikeAcceleration;
+		elif bikeSpeed > bikeMaxSpeed:
+			bikeSpeed = bikeMaxSpeed;
+	if Input.is_action_just_released("up"):
+		isAccelerating = false;
+
+	if bikeSpeed > 0:
+		movingForward = true;
 		velocity = manageBikeDirection();
+		if isAccelerating == false:
+			if bikeSpeed > 0:
+				bikeSpeed -= bikeFriction;
+			if bikeSpeed < 0:
+				bikeSpeed = 0;
+	elif bikeSpeed == 0:
+		movingForward = false;
+
 	if Input.is_action_pressed("down"):
-		if bikeSpeed == 0:
+		if movingForward == false:
 			velocity = manageBikeDirection() * -1;
 			movingBackward = true;
 	if Input.is_action_just_released("down") and bikeSpeed == 0:
 		movingBackward = false;
 
-	if bikeSpeed > 0:
+	if movingForward:
 		velocity = velocity.normalized() * bikeSpeed;
-	if bikeSpeed == 0 and movingBackward == true:
+	if movingBackward == true:
 		velocity = velocity.normalized() * 15;
 
 
@@ -265,9 +289,9 @@ func animateOnBike():
 			if bikeActualDir == "down":
 				$AnimatedSprite.animation = "bike_slow_pace_downward";
 			elif bikeActualDir == "down_right":
-				$AnimatedSprite.animation = "bike_idle_downward_right";
+				$AnimatedSprite.animation = "bike_slow_pace_downward_right";
 			elif bikeActualDir == "down_left":
-				$AnimatedSprite.animation = "bike_idle_downward_left";
+				$AnimatedSprite.animation = "bike_slow_pace_downward_left";
 			#Up#
 			elif bikeActualDir == "up":
 				$AnimatedSprite.animation = "bike_slow_pace_upward";
@@ -279,16 +303,16 @@ func animateOnBike():
 			elif bikeActualDir == "right":
 				$AnimatedSprite.animation = "bike_slow_pace_right";
 			elif bikeActualDir == "right_up":
-				$AnimatedSprite.animation = "bike_idle_right_up";
+				$AnimatedSprite.animation = "bike_slow_pace_right_upward";
 			elif bikeActualDir == "right_down":
-				$AnimatedSprite.animation = "bike_idle_right_down";
+				$AnimatedSprite.animation = "bike_slow_pace_right_downward";
 			#Left#
 			elif bikeActualDir == "left":
 				$AnimatedSprite.animation = "bike_slow_pace_left";
 			elif bikeActualDir == "left_up":
-				$AnimatedSprite.animation = "bike_idle_left_up";
+				$AnimatedSprite.animation = "bike_slow_pace_left_upward";
 			elif bikeActualDir == "left_down":
-				$AnimatedSprite.animation = "bike_idle_left_down";
+				$AnimatedSprite.animation = "bike_slow_pace_left_downward";
 		if movingBackward == true:
 			#Down#
 			if bikeActualDir == "down":
