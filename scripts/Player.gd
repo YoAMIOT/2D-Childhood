@@ -8,7 +8,7 @@ var transportation : String = "walk";
 var walkSpeed : int = 50;
 var runSpeed : int = walkSpeed * 2;
 var isRunning : bool = false;
-var actualDir : String = "down";
+var footActualDir : String = "down";
 
 #Bike Variables#
 var bikeSpeed : int = 10;
@@ -22,8 +22,10 @@ func _physics_process(delta):
 	if Input.is_action_just_pressed("select_transportation") and velocity == Vector2(0, 0):
 		if transportation == "walk":
 			transportation = "bike";
+			manageDirectionWhenSwitchingTransportation("walk", "bike");
 		elif transportation == "bike":
 			transportation = "walk";
+			manageDirectionWhenSwitchingTransportation("bike", "walk");
 
 	if transportation == "walk":
 		animateOnFoot();
@@ -36,22 +38,45 @@ func _physics_process(delta):
 
 
 
+#Function to manage and keep direction when switching between transportations#
+func manageDirectionWhenSwitchingTransportation(var lastTransport : String, var transport : String):
+	if lastTransport == "walk" and transport == "bike":
+		if footActualDir == "down":
+			bikeActualDir = "down";
+		elif footActualDir == "up":
+			bikeActualDir = "up";
+		elif footActualDir == "right":
+			bikeActualDir = "right";
+		elif footActualDir == "left":
+			bikeActualDir = "left";
+	elif lastTransport == "bike" and transport == "walk":
+		if bikeActualDir.begins_with("up"):
+			footActualDir = "up";
+		elif bikeActualDir.begins_with("down"):
+			footActualDir = "down";
+		elif bikeActualDir.begins_with("right"):
+			footActualDir = "right";
+		elif bikeActualDir.begins_with("left"):
+			footActualDir = "left";
+
+
+
 #Function to get the input of the player on foot#
 func getInputOnFoot():
 	velocity = Vector2.ZERO;
 
 	if Input.is_action_pressed("down"):
 		velocity.y += 1;
-		actualDir = "down";
+		footActualDir = "down";
 	if Input.is_action_pressed("up"):
 		velocity.y -= 1
-		actualDir = "up";
+		footActualDir = "up";
 	if Input.is_action_pressed("right"):
 		velocity.x += 1;
-		actualDir = "right";
+		footActualDir = "right";
 	if Input.is_action_pressed("left"):
 		velocity.x -= 1;
-		actualDir = "left";
+		footActualDir = "left";
 	if Input.is_action_pressed("run"):
 		isRunning = true;
 		velocity = velocity.normalized() * runSpeed;
@@ -68,33 +93,33 @@ func animateOnFoot():
 	if velocity == Vector2(0, 0):
 		if isRunning == true:
 			$AnimatedSprite.animation = "foot_idle_impatient";
-		elif actualDir == "down":
+		elif footActualDir == "down":
 			$AnimatedSprite.animation = "foot_idle_downward";
-		elif actualDir == "up":
+		elif footActualDir == "up":
 			$AnimatedSprite.animation = "foot_idle_upward";
-		elif actualDir == "right":
+		elif footActualDir == "right":
 			$AnimatedSprite.animation = "foot_idle_right";
-		elif actualDir == "left":
+		elif footActualDir == "left":
 			$AnimatedSprite.animation = "foot_idle_left";
 
 	if velocity != Vector2(0, 0):
 		if isRunning == false:
-			if actualDir == "down":
+			if footActualDir == "down":
 				$AnimatedSprite.animation = "foot_walk_downward";
-			elif actualDir == "up":
+			elif footActualDir == "up":
 				$AnimatedSprite.animation = "foot_walk_upward";
-			elif actualDir == "right":
+			elif footActualDir == "right":
 				$AnimatedSprite.animation = "foot_walk_right";
-			elif actualDir == "left":
+			elif footActualDir == "left":
 				$AnimatedSprite.animation = "foot_walk_left";
 		elif isRunning == true:
-			if actualDir == "down":
+			if footActualDir == "down":
 				$AnimatedSprite.animation = "foot_run_downward";
-			elif actualDir == "up":
+			elif footActualDir == "up":
 				$AnimatedSprite.animation = "foot_run_upward";
-			elif actualDir == "right":
+			elif footActualDir == "right":
 				$AnimatedSprite.animation = "foot_run_right";
-			elif actualDir == "left":
+			elif footActualDir == "left":
 				$AnimatedSprite.animation = "foot_run_left";
 
 
@@ -103,16 +128,18 @@ func animateOnFoot():
 func getInputOnBike():
 	velocity = Vector2.ZERO;
 
+	if Input.is_action_just_pressed("right"):
+		virtualRotation += 30;
+		setRotation();
+	if Input.is_action_just_pressed("left"):
+		virtualRotation -= 30;
+		setRotation();
+
 	if Input.is_action_pressed("up"):
 		pass;
 	if Input.is_action_pressed("down"):
 		pass;
-	if Input.is_action_just_pressed("right"):
-		virtualRotation += 30;
-	if Input.is_action_just_pressed("left"):
-		virtualRotation -= 30;
 
-	setRotation();
 	velocity = velocity.normalized() * bikeSpeed;
 
 
