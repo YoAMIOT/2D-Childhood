@@ -352,32 +352,32 @@ func animateOnBike():
 	if movingBackward == true:
 		#Down#
 		if bikeActualDir == "down":
-			$AnimatedSprite.animation = "bike_idle_downward";
+			$AnimatedSprite.animation = "bike_backward_downward";
 		elif bikeActualDir == "down_right":
-			$AnimatedSprite.animation = "bike_idle_downward_right";
+			$AnimatedSprite.animation = "bike_backward_downward_right";
 		elif bikeActualDir == "down_left":
-			$AnimatedSprite.animation = "bike_idle_downward_left";
+			$AnimatedSprite.animation = "bike_backward_downward_left";
 		#Up#
 		elif bikeActualDir == "up":
-			$AnimatedSprite.animation = "bike_idle_upward";
+			$AnimatedSprite.animation = "bike_backward_downward_upward";
 		elif bikeActualDir == "up_right":
-			$AnimatedSprite.animation = "bike_idle_upward_right";
+			$AnimatedSprite.animation = "bike_backward_downward_upward_right";
 		elif bikeActualDir == "up_left":
-			$AnimatedSprite.animation = "bike_idle_upward_left";
+			$AnimatedSprite.animation = "bike_backward_downward_upward_left";
 		#Right#
 		elif bikeActualDir == "right":
-			$AnimatedSprite.animation = "bike_idle_right";
+			$AnimatedSprite.animation = "bike_backward_downward_right";
 		elif bikeActualDir == "right_up":
-			$AnimatedSprite.animation = "bike_idle_right_up";
+			$AnimatedSprite.animation = "bike_backward_downward_right_up";
 		elif bikeActualDir == "right_down":
-			$AnimatedSprite.animation = "bike_idle_right_down";
+			$AnimatedSprite.animation = "bike_backward_downward_right_down";
 		#Left#
 		elif bikeActualDir == "left":
-			$AnimatedSprite.animation = "bike_idle_left";
+			$AnimatedSprite.animation = "bike_backward_downward_left";
 		elif bikeActualDir == "left_up":
-			$AnimatedSprite.animation = "bike_idle_left_up";
+			$AnimatedSprite.animation = "bike_backward_downward_left_up";
 		elif bikeActualDir == "left_down":
-			$AnimatedSprite.animation = "bike_idle_left_down";
+			$AnimatedSprite.animation = "bike_backward_downward_left_down";
 
 
 
