@@ -20,7 +20,7 @@ var bikeBrake : float = 1.2;
 var bikeMaxSpeed : int = 120;
 var movingForward : bool = false;
 var isAccelerating: bool = false;
-var bikeFriction : float = 0.3;
+var bikeFriction : float = 0.4;
 
 
 
@@ -165,6 +165,7 @@ func getInputOnBike():
 				bikeSpeed = 0;
 	elif bikeSpeed == 0:
 		movingForward = false;
+		$AnimatedSprite.speed_scale = 1;
 
 	if Input.is_action_pressed("down"):
 		if movingForward == true:
@@ -347,6 +348,7 @@ func animateOnBike():
 				$AnimatedSprite.animation = "bike_braking_left_upward";
 			elif bikeActualDir == "left_down":
 				$AnimatedSprite.animation = "bike_braking_left_downward";
+		manageAnimationSpeedScale();
 	if movingBackward == true:
 		#Down#
 		if bikeActualDir == "down":
@@ -376,3 +378,21 @@ func animateOnBike():
 			$AnimatedSprite.animation = "bike_idle_left_up";
 		elif bikeActualDir == "left_down":
 			$AnimatedSprite.animation = "bike_idle_left_down";
+
+
+
+#Function to manage the speed of an animation#
+func manageAnimationSpeedScale():
+	var currentAnim = $AnimatedSprite.animation;
+	if bikeSpeed > 0 and bikeSpeed < 20:
+		$AnimatedSprite.speed_scale = 0.4;
+	elif bikeSpeed >= 20 and bikeSpeed < 60:
+		$AnimatedSprite.speed_scale = 0.6;
+	elif bikeSpeed >= 60 and bikeSpeed < 80:
+		$AnimatedSprite.speed_scale = 0.8;
+	elif bikeSpeed >= 80 and bikeSpeed < 100:
+		$AnimatedSprite.speed_scale = 1;
+	elif bikeSpeed >= 100 and bikeSpeed < 120:
+		$AnimatedSprite.speed_scale = 1.2;
+	elif bikeSpeed >= 120 and bikeSpeed <= 150:
+		$AnimatedSprite.speed_scale = 1.5;
