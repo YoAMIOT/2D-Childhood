@@ -11,9 +11,10 @@ var isRunning : bool = false;
 var footActualDir : String = "down";
 
 #Bike Variables#
-var bikeSpeed : int = 10;
+var bikeSpeed : int = 0;
 var virtualRotation : int = 180;
 var bikeActualDir : String = "down";
+var movingBackward : bool = false;
 
 
 
@@ -136,11 +137,55 @@ func getInputOnBike():
 		setRotation();
 
 	if Input.is_action_pressed("up"):
-		pass;
+		velocity = manageBikeDirection();
 	if Input.is_action_pressed("down"):
-		pass;
+		if bikeSpeed == 0:
+			velocity = manageBikeDirection() * -1;
+			movingBackward = true;
+	if Input.is_action_just_released("down") and bikeSpeed == 0:
+		movingBackward = false;
 
-	velocity = velocity.normalized() * bikeSpeed;
+	if bikeSpeed > 0:
+		velocity = velocity.normalized() * bikeSpeed;
+	if bikeSpeed == 0 and movingBackward == true:
+		velocity = velocity.normalized() * 15;
+
+
+
+#Function to handle the acceleration based on the direction#
+func manageBikeDirection() -> Vector2:
+	var bikeDirection : Vector2 = Vector2.ZERO;
+
+	#Up#
+	if bikeActualDir == "up":
+		bikeDirection = Vector2(0, -1);
+	elif bikeActualDir == "up_right":
+		bikeDirection = Vector2(0.3, -0.7);
+	elif bikeActualDir == "up_left":
+		bikeDirection = Vector2(-0.3, -0.7);
+	#Down#
+	elif bikeActualDir == "down":
+		bikeDirection = Vector2(0, 1);
+	elif bikeActualDir == "down_right":
+		bikeDirection = Vector2(0.3, 0.7);
+	elif bikeActualDir == "down_left":
+		bikeDirection = Vector2(-0.3, 0.7);
+	#Right#
+	elif bikeActualDir == "right":
+		bikeDirection = Vector2(1, 0);
+	elif bikeActualDir == "right_up":
+		bikeDirection = Vector2(0.7, -0.3);
+	elif bikeActualDir == "right_down":
+		bikeDirection = Vector2(0.7, 0.3);
+	#Left#
+	elif bikeActualDir == "left":
+		bikeDirection = Vector2(-1, 0);
+	elif bikeActualDir == "left_up":
+		bikeDirection = Vector2(-0.7, -0.3);
+	elif bikeActualDir == "left_down":
+		bikeDirection = Vector2(-0.7, 0.3);
+
+	return bikeDirection;
 
 
 
