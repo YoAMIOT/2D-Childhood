@@ -12,15 +12,25 @@ var footActualDir : String = "down";
 
 #Bike Variables#
 var bikeSpeed : float = 0;
+var bikeMaxSpeed : int = 120;
 var virtualRotation : int = 180;
+var bikeAcceleration : float = 0.5;
+var bikeBrake : float = 1.2;
+var bikeFriction : float = 0.4;
 var bikeActualDir : String = "down";
 var movingBackward : bool = false;
-var bikeAcceleration: float = 0.5;
-var bikeBrake : float = 1.2;
-var bikeMaxSpeed : int = 120;
 var movingForward : bool = false;
 var isAccelerating: bool = false;
-var bikeFriction : float = 0.4;
+
+#Longboard Variables#
+var longboardSpeed : float = 0;
+var longboardMaxSpeed : int = 130;
+var longboardVirtualRotation : int = 180;
+var longboardAcceleration : float = 8;
+var longboardFriction : float = 0.4;
+var longboardBrake : float = 1.2;
+var longboardActualDir : String = "downward";
+var longboardMovingForward : bool = false;
 
 
 
@@ -38,6 +48,9 @@ func _physics_process(delta):
 	elif transportation == "bike":
 		animateOnBike();
 		getInputOnBike();
+	elif transportation == "longboard":
+		animateOnLongboard();
+		getInputOnLongboard();
 
 	velocity = move_and_slide(velocity);
 
@@ -147,10 +160,10 @@ func getInputOnBike():
 
 	if Input.is_action_just_pressed("right"):
 		virtualRotation += 30;
-		setRotation();
+		setBikeRotation();
 	if Input.is_action_just_pressed("left"):
 		virtualRotation -= 30;
-		setRotation();
+		setBikeRotation();
 
 	if Input.is_action_pressed("up"):
 		isAccelerating = true;
@@ -192,7 +205,7 @@ func getInputOnBike():
 
 
 
-#Function to handle the acceleration based on the direction#
+#Function to handle the acceleration based on the direction for the bike#
 func manageBikeDirection() -> Vector2:
 	var bikeDirection : Vector2 = Vector2.ZERO;
 
@@ -230,7 +243,7 @@ func manageBikeDirection() -> Vector2:
 
 
 #Function to set the rotation of the bike#
-func setRotation():
+func setBikeRotation():
 	if virtualRotation >= 360:
 		virtualRotation = 0;
 	if virtualRotation < 0:
@@ -389,7 +402,6 @@ func animateOnBike():
 
 #Function to manage the speed of an animation#
 func manageAnimationSpeedScale():
-	var currentAnim = $AnimatedSprite.animation;
 	if bikeSpeed > 0 and bikeSpeed < 20:
 		$AnimatedSprite.speed_scale = 0.4;
 	elif bikeSpeed >= 20 and bikeSpeed < 40:
@@ -414,3 +426,205 @@ func manageAnimationSpeedScale():
 		$AnimatedSprite.speed_scale = 1.4;
 	elif bikeSpeed >= 140 and bikeSpeed <= 150:
 		$AnimatedSprite.speed_scale = 1.5;
+
+
+
+#Function to get the input of the player on bike#
+func getInputOnLongboard():
+	velocity = Vector2.ZERO;
+
+	if Input.is_action_pressed("right"):
+		if longboardActualDir == "downward":
+			longboardVirtualRotation = 210;
+		elif longboardActualDir == "upward":
+			longboardVirtualRotation = 30;
+		elif longboardActualDir == "right":
+			longboardVirtualRotation = 120;
+		elif longboardActualDir == "left":
+			longboardVirtualRotation = 300;
+		setLongboardRotation();
+	if Input.is_action_just_released("right"):
+		if longboardActualDir.begins_with("downward"):
+			longboardVirtualRotation = 180;
+		elif longboardActualDir.begins_with("upward"):
+			longboardVirtualRotation = 0;
+		elif longboardActualDir.begins_with("right"):
+			longboardVirtualRotation = 90;
+		elif longboardActualDir.begins_with("left"):
+			longboardVirtualRotation = 270;
+		setLongboardRotation();
+
+	if Input.is_action_pressed("left"):
+		if longboardActualDir == "downward":
+			longboardVirtualRotation = 150;
+		elif longboardActualDir == "upward":
+			longboardVirtualRotation = 330;
+		elif longboardActualDir == "right":
+			longboardVirtualRotation = 60;
+		elif longboardActualDir == "left":
+			longboardVirtualRotation = 240;
+		setLongboardRotation();
+	if Input.is_action_just_released("left"):
+		if longboardActualDir.begins_with("downward"):
+			longboardVirtualRotation = 180;
+		elif longboardActualDir.begins_with("upward"):
+			longboardVirtualRotation = 0;
+		elif longboardActualDir.begins_with("right"):
+			longboardVirtualRotation = 90;
+		elif longboardActualDir.begins_with("left"):
+			longboardVirtualRotation = 270;
+		setLongboardRotation();
+
+	if Input.is_action_pressed("up"):
+		if longboardSpeed <= longboardMaxSpeed:
+			longboardSpeed += longboardAcceleration;
+		elif longboardSpeed > longboardMaxSpeed:
+			longboardSpeed = longboardMaxSpeed;
+
+	if longboardSpeed > 0:
+		longboardMovingForward = true;
+		velocity = manageLongboardDirection();
+		if longboardSpeed > 0:
+			longboardSpeed -= longboardFriction;
+		if longboardSpeed < 0:
+			longboardSpeed = 0;
+	elif longboardSpeed == 0:
+		longboardMovingForward = false;
+
+	if Input.is_action_pressed("down"):
+		if longboardMovingForward == true:
+			if longboardSpeed > 0:
+				longboardSpeed -= longboardBrake;
+			elif longboardSpeed < 0:
+				longboardSpeed = 0;
+
+	if Input.is_action_just_pressed("left"):
+		if velocity == Vector2(0, 0):
+			longboardVirtualRotation -= 90;
+		setLongboardRotation();
+
+	if Input.is_action_just_pressed("right"):
+		if velocity == Vector2(0, 0):
+			longboardVirtualRotation += 90;
+		setLongboardRotation();
+
+	velocity = velocity.normalized() * longboardSpeed;
+
+
+
+#Function to set the rotation of the bike#
+func setLongboardRotation():
+	if longboardVirtualRotation >= 360:
+		longboardVirtualRotation = 0;
+	if longboardVirtualRotation == -90:
+		longboardVirtualRotation = 270;
+
+	if longboardVirtualRotation == 0 or longboardVirtualRotation == 360:
+		longboardActualDir = "upward";
+	elif longboardVirtualRotation == 30:
+		longboardActualDir = "upward_right";
+	elif longboardVirtualRotation == 60:
+		longboardActualDir = "right_upward";
+	elif longboardVirtualRotation == 90:
+		longboardActualDir = "right";
+	elif longboardVirtualRotation == 120:
+		longboardActualDir = "right_downward";
+	elif longboardVirtualRotation == 150:
+		longboardActualDir = "downward_right";
+	elif longboardVirtualRotation == 180:
+		longboardActualDir = "downward";
+	elif longboardVirtualRotation == 210:
+		longboardActualDir = "downward_left";
+	elif longboardVirtualRotation == 240:
+		longboardActualDir = "left_downward";
+	elif longboardVirtualRotation == 270:
+		longboardActualDir = "left";
+	elif longboardVirtualRotation == 300:
+		longboardActualDir = "left_upward";
+	elif longboardVirtualRotation == 330:
+		longboardActualDir = "upward_left";
+
+
+
+#Function to handle the acceleration based on the direction on longboard#
+func manageLongboardDirection() -> Vector2:
+	var direction : Vector2 = Vector2.ZERO;
+
+	#Up#
+	if longboardActualDir == "upward":
+		direction = Vector2(0, -1);
+	elif longboardActualDir == "upward_right":
+		direction = Vector2(0.3, -0.7);
+	elif longboardActualDir == "upward_left":
+		direction = Vector2(-0.3, -0.7);
+	#Down#
+	elif longboardActualDir == "downward":
+		direction = Vector2(0, 1);
+	elif longboardActualDir == "downward_right":
+		direction = Vector2(0.3, 0.7);
+	elif longboardActualDir == "downward_left":
+		direction = Vector2(-0.3, 0.7);
+	#Right#
+	elif longboardActualDir == "right":
+		direction = Vector2(1, 0);
+	elif longboardActualDir == "right_upward":
+		direction = Vector2(0.7, -0.3);
+	elif longboardActualDir == "right_downward":
+		direction = Vector2(0.7, 0.3);
+	#Left#
+	elif longboardActualDir == "left":
+		direction = Vector2(-1, 0);
+	elif longboardActualDir == "left_upward":
+		direction = Vector2(-0.7, -0.3);
+	elif longboardActualDir == "left_downward":
+		direction = Vector2(-0.7, 0.3);
+
+	return direction;
+
+
+
+#Function to animate the Animated Sprite by testing what the player is doing on longboard#
+func animateOnLongboard():
+	if velocity == Vector2(0, 0):
+		#Down#
+		if longboardActualDir.begins_with("downward"):
+			$AnimatedSprite.animation = "longboard_idle_downward";
+		#Up#
+		elif longboardActualDir.begins_with("upward"):
+			$AnimatedSprite.animation = "longboard_idle_upward";
+		#Right#
+		elif longboardActualDir.begins_with("right"):
+			$AnimatedSprite.animation = "longboard_idle_right";
+		#Left#
+		elif longboardActualDir.begins_with("upward"):
+			$AnimatedSprite.animation = "longboard_idle_left";
+
+	if longboardMovingForward == true:
+		#Down#
+		if bikeActualDir == "downward":
+			$AnimatedSprite.animation = "longboard_idle_downward";
+		elif bikeActualDir == "downward_right":
+			$AnimatedSprite.animation = "longboard_idle_downward";
+		elif bikeActualDir == "downward_left":
+			$AnimatedSprite.animation = "longboard_idle_downward";
+		#Up#
+		elif bikeActualDir == "upward":
+			$AnimatedSprite.animation = "longboard_idle_upward";
+		elif bikeActualDir == "upward_right":
+			$AnimatedSprite.animation = "longboard_idle_upward";
+		elif bikeActualDir == "upward_left":
+			$AnimatedSprite.animation = "longboard_idle_upward";
+		#Right#
+		elif bikeActualDir == "right":
+			$AnimatedSprite.animation = "longboard_idle_right";
+		elif bikeActualDir == "right_upward":
+			$AnimatedSprite.animation = "longboard_idle_right";
+		elif bikeActualDir == "right_downward":
+			$AnimatedSprite.animation = "longboard_idle_right";
+		#Left#
+		elif bikeActualDir == "left":
+			$AnimatedSprite.animation = "longboard_idle_left";
+		elif bikeActualDir == "left_upward":
+			$AnimatedSprite.animation = "longboard_idle_left";
+		elif bikeActualDir == "left_downward":
+			$AnimatedSprite.animation = "longboard_idle_left";
