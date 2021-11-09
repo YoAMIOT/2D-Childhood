@@ -359,25 +359,25 @@ func animateOnBike():
 			$AnimatedSprite.animation = "bike_backward_downward_left";
 		#Up#
 		elif bikeActualDir == "up":
-			$AnimatedSprite.animation = "bike_backward_downward_upward";
+			$AnimatedSprite.animation = "bike_backward_upward";
 		elif bikeActualDir == "up_right":
-			$AnimatedSprite.animation = "bike_backward_downward_upward_right";
+			$AnimatedSprite.animation = "bike_backward_upward_right";
 		elif bikeActualDir == "up_left":
-			$AnimatedSprite.animation = "bike_backward_downward_upward_left";
+			$AnimatedSprite.animation = "bike_backward_upward_left";
 		#Right#
 		elif bikeActualDir == "right":
-			$AnimatedSprite.animation = "bike_backward_downward_right";
+			$AnimatedSprite.animation = "bike_backward_right";
 		elif bikeActualDir == "right_up":
-			$AnimatedSprite.animation = "bike_backward_downward_right_up";
+			$AnimatedSprite.animation = "bike_backward_right_upward";
 		elif bikeActualDir == "right_down":
-			$AnimatedSprite.animation = "bike_backward_downward_right_down";
+			$AnimatedSprite.animation = "bike_backward_right_downward";
 		#Left#
 		elif bikeActualDir == "left":
-			$AnimatedSprite.animation = "bike_backward_downward_left";
+			$AnimatedSprite.animation = "bike_backward_left";
 		elif bikeActualDir == "left_up":
-			$AnimatedSprite.animation = "bike_backward_downward_left_up";
+			$AnimatedSprite.animation = "bike_backward_left_upward";
 		elif bikeActualDir == "left_down":
-			$AnimatedSprite.animation = "bike_backward_downward_left_down";
+			$AnimatedSprite.animation = "bike_backward_left_downward";
 
 
 
@@ -386,13 +386,25 @@ func manageAnimationSpeedScale():
 	var currentAnim = $AnimatedSprite.animation;
 	if bikeSpeed > 0 and bikeSpeed < 20:
 		$AnimatedSprite.speed_scale = 0.4;
-	elif bikeSpeed >= 20 and bikeSpeed < 60:
+	elif bikeSpeed >= 20 and bikeSpeed < 40:
+		$AnimatedSprite.speed_scale = 0.5;
+	elif bikeSpeed >= 40 and bikeSpeed < 60:
 		$AnimatedSprite.speed_scale = 0.6;
-	elif bikeSpeed >= 60 and bikeSpeed < 80:
+	elif bikeSpeed >= 60 and bikeSpeed < 70:
+		$AnimatedSprite.speed_scale = 0.7;
+	elif bikeSpeed >= 70 and bikeSpeed < 80:
 		$AnimatedSprite.speed_scale = 0.8;
-	elif bikeSpeed >= 80 and bikeSpeed < 100:
+	elif bikeSpeed >= 80 and bikeSpeed < 90:
+		$AnimatedSprite.speed_scale = 0.9;
+	elif bikeSpeed >= 90 and bikeSpeed < 100:
 		$AnimatedSprite.speed_scale = 1;
-	elif bikeSpeed >= 100 and bikeSpeed < 120:
+	elif bikeSpeed >= 100 and bikeSpeed < 110:
+		$AnimatedSprite.speed_scale = 1.1;
+	elif bikeSpeed >= 110 and bikeSpeed < 120:
 		$AnimatedSprite.speed_scale = 1.2;
-	elif bikeSpeed >= 120 and bikeSpeed <= 150:
+	elif bikeSpeed >= 120 and bikeSpeed < 130:
+		$AnimatedSprite.speed_scale = 1.3;
+	elif bikeSpeed >= 130 and bikeSpeed < 140:
+		$AnimatedSprite.speed_scale = 1.4;
+	elif bikeSpeed >= 140 and bikeSpeed <= 150:
 		$AnimatedSprite.speed_scale = 1.5;
