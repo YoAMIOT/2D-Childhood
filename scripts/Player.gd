@@ -26,11 +26,12 @@ var isAccelerating: bool = false;
 var longboardSpeed : float = 0;
 var longboardMaxSpeed : int = 130;
 var longboardVirtualRotation : int = 180;
-var longboardAcceleration : float = 8;
+var longboardAcceleration : float = 0.5;
 var longboardFriction : float = 0.4;
 var longboardBrake : float = 1.2;
 var longboardActualDir : String = "downward";
 var longboardMovingForward : bool = false;
+var isPushing : bool = false;
 
 
 
@@ -79,6 +80,19 @@ func manageDirectionWhenSwitchingTransportation(var lastTransport : String, var 
 		elif footActualDir == "left":
 			virtualRotation = 270;
 			bikeActualDir = "left";
+	elif lastTransport == "walk" and transport == "longboard":
+		if footActualDir == "down":
+			longboardVirtualRotation = 180;
+			longboardActualDir = "downward";
+		elif footActualDir == "up":
+			longboardVirtualRotation = 0;
+			longboardActualDir = "upward";
+		elif footActualDir == "right":
+			longboardVirtualRotation = 90;
+			longboardActualDir = "right";
+		elif footActualDir == "left":
+			longboardVirtualRotation = 270;
+			longboardActualDir = "left";
 	elif lastTransport == "bike" and transport == "walk":
 		if bikeActualDir.begins_with("up"):
 			footActualDir = "up";
@@ -87,6 +101,41 @@ func manageDirectionWhenSwitchingTransportation(var lastTransport : String, var 
 		elif bikeActualDir.begins_with("right"):
 			footActualDir = "right";
 		elif bikeActualDir.begins_with("left"):
+			footActualDir = "left";
+	elif lastTransport == "bike" and transport == "longboard":
+		if bikeActualDir.begins_with("up"):
+			longboardVirtualRotation = 0;
+			longboardActualDir = "upward";
+		elif bikeActualDir.begins_with("down"):
+			longboardVirtualRotation = 180;
+			longboardActualDir = "downward";
+		elif bikeActualDir.begins_with("right"):
+			longboardVirtualRotation = 90;
+			longboardActualDir = "right";
+		elif bikeActualDir.begins_with("left"):
+			longboardVirtualRotation = 270;
+			longboardActualDir = "left";
+	elif lastTransport == "longboard" and transport == "bike":
+		if longboardActualDir.begins_with("upward"):
+			virtualRotation = 0;
+			bikeActualDir = "up";
+		elif longboardActualDir.begins_with("downward"):
+			virtualRotation = 180;
+			bikeActualDir = "down";
+		elif longboardActualDir.begins_with("right"):
+			virtualRotation = 90;
+			bikeActualDir = "right";
+		elif longboardActualDir.begins_with("left"):
+			virtualRotation = 270;
+			bikeActualDir = "left";
+	elif lastTransport == "longboard" and transport == "walk":
+		if longboardActualDir.begins_with("upward"):
+			footActualDir = "up";
+		elif longboardActualDir.begins_with("downward"):
+			footActualDir = "down";
+		elif longboardActualDir.begins_with("right"):
+			footActualDir = "right";
+		elif longboardActualDir.begins_with("left"):
 			footActualDir = "left";
 
 
@@ -433,58 +482,39 @@ func manageAnimationSpeedScale():
 func getInputOnLongboard():
 	velocity = Vector2.ZERO;
 
-	if Input.is_action_pressed("right"):
-		if longboardActualDir == "downward":
-			longboardVirtualRotation = 210;
-		elif longboardActualDir == "upward":
-			longboardVirtualRotation = 30;
-		elif longboardActualDir == "right":
-			longboardVirtualRotation = 120;
-		elif longboardActualDir == "left":
-			longboardVirtualRotation = 300;
-		setLongboardRotation();
-	if Input.is_action_just_released("right"):
-		if longboardActualDir.begins_with("downward"):
-			longboardVirtualRotation = 180;
-		elif longboardActualDir.begins_with("upward"):
-			longboardVirtualRotation = 0;
-		elif longboardActualDir.begins_with("right"):
-			longboardVirtualRotation = 90;
-		elif longboardActualDir.begins_with("left"):
-			longboardVirtualRotation = 270;
-		setLongboardRotation();
-
-	if Input.is_action_pressed("left"):
-		if longboardActualDir == "downward":
-			longboardVirtualRotation = 150;
-		elif longboardActualDir == "upward":
-			longboardVirtualRotation = 330;
-		elif longboardActualDir == "right":
-			longboardVirtualRotation = 60;
-		elif longboardActualDir == "left":
-			longboardVirtualRotation = 240;
-		setLongboardRotation();
-	if Input.is_action_just_released("left"):
-		if longboardActualDir.begins_with("downward"):
-			longboardVirtualRotation = 180;
-		elif longboardActualDir.begins_with("upward"):
-			longboardVirtualRotation = 0;
-		elif longboardActualDir.begins_with("right"):
-			longboardVirtualRotation = 90;
-		elif longboardActualDir.begins_with("left"):
-			longboardVirtualRotation = 270;
-		setLongboardRotation();
-
 	if Input.is_action_pressed("up"):
+		isPushing = true;
 		if longboardSpeed <= longboardMaxSpeed:
 			longboardSpeed += longboardAcceleration;
 		elif longboardSpeed > longboardMaxSpeed:
 			longboardSpeed = longboardMaxSpeed;
+		if Input.is_action_pressed("left"):
+			if longboardActualDir == "downward":
+				longboardVirtualRotation = 150;
+			elif longboardActualDir == "upward":
+				longboardVirtualRotation = 330;
+			elif longboardActualDir == "right":
+				longboardVirtualRotation = 60;
+			elif longboardActualDir == "left":
+				longboardVirtualRotation = 240;
+			setLongboardRotation();
+		elif Input.is_action_pressed("right"):
+			if longboardActualDir == "downward":
+				longboardVirtualRotation = 210;
+			elif longboardActualDir == "upward":
+				longboardVirtualRotation = 30;
+			elif longboardActualDir == "right":
+				longboardVirtualRotation = 120;
+			elif longboardActualDir == "left":
+				longboardVirtualRotation = 300;
+			setLongboardRotation();
+	if Input.is_action_just_released("up"):
+		isPushing = false;
 
 	if longboardSpeed > 0:
 		longboardMovingForward = true;
 		velocity = manageLongboardDirection();
-		if longboardSpeed > 0:
+		if isPushing == false:
 			longboardSpeed -= longboardFriction;
 		if longboardSpeed < 0:
 			longboardSpeed = 0;
@@ -498,14 +528,25 @@ func getInputOnLongboard():
 			elif longboardSpeed < 0:
 				longboardSpeed = 0;
 
-	if Input.is_action_just_pressed("left"):
-		if velocity == Vector2(0, 0):
-			longboardVirtualRotation -= 90;
+	if Input.is_action_just_released("right"):
+		if longboardActualDir.begins_with("downward"):
+			longboardVirtualRotation = 180;
+		elif longboardActualDir.begins_with("upward"):
+			longboardVirtualRotation = 0;
+		elif longboardActualDir.begins_with("right"):
+			longboardVirtualRotation = 90;
+		elif longboardActualDir.begins_with("left"):
+			longboardVirtualRotation = 270;
 		setLongboardRotation();
-
-	if Input.is_action_just_pressed("right"):
-		if velocity == Vector2(0, 0):
-			longboardVirtualRotation += 90;
+	if Input.is_action_just_released("left"):
+		if longboardActualDir.begins_with("downward"):
+			longboardVirtualRotation = 180;
+		elif longboardActualDir.begins_with("upward"):
+			longboardVirtualRotation = 0;
+		elif longboardActualDir.begins_with("right"):
+			longboardVirtualRotation = 90;
+		elif longboardActualDir.begins_with("left"):
+			longboardVirtualRotation = 270;
 		setLongboardRotation();
 
 	velocity = velocity.normalized() * longboardSpeed;
