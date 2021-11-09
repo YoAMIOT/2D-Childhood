@@ -26,13 +26,11 @@ var bikeFriction : float = 0.4;
 
 #Process Function#
 func _physics_process(delta):
-	if Input.is_action_just_pressed("select_transportation") and velocity == Vector2(0, 0):
-		if transportation == "walk":
-			transportation = "bike";
-			manageDirectionWhenSwitchingTransportation("walk", "bike");
-		elif transportation == "bike":
-			transportation = "walk";
-			manageDirectionWhenSwitchingTransportation("bike", "walk");
+	if Input.is_action_just_pressed("select_transportation"):
+		if $Phone.visible == false:
+			$Phone.visible = true;
+		elif $Phone.visible == true:
+			$Phone.visible = false;
 
 	if transportation == "walk":
 		animateOnFoot();
@@ -42,6 +40,14 @@ func _physics_process(delta):
 		getInputOnBike();
 
 	velocity = move_and_slide(velocity);
+
+
+
+#Function to switch mean of transportation#
+func switchTransportation(var newTransportation : String):
+	manageDirectionWhenSwitchingTransportation(transportation, newTransportation);
+	$AnimatedSprite.speed_scale = 1;
+	transportation = newTransportation;
 
 
 

@@ -1,0 +1,74 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://ressources/phone/transportation_menu/transportation_menu_hover_bike.png" type="Texture" id=1]
+[ext_resource path="res://ressources/phone/transportation_menu/transportation_menu.png" type="Texture" id=2]
+[ext_resource path="res://ressources/phone/transportation_menu/transportation_menu_hover_longboard.png" type="Texture" id=3]
+[ext_resource path="res://ressources/phone/transportation_menu/transportation_menu_hover_foot.png" type="Texture" id=4]
+[ext_resource path="res://scripts/Phone.gd" type="Script" id=5]
+
+[sub_resource type="SpriteFrames" id=1]
+animations = [ {
+"frames": [ ExtResource( 2 ) ],
+"loop": true,
+"name": "transportation_menu",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 3 ) ],
+"loop": true,
+"name": "transportation_menu_hover_longboard",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 1 ) ],
+"loop": true,
+"name": "transportation_menu_hover_bike",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 4 ) ],
+"loop": true,
+"name": "transportation_menu_hover_foot",
+"speed": 5.0
+} ]
+
+[node name="Phone" type="AnimatedSprite"]
+z_index = 10
+frames = SubResource( 1 )
+animation = "transportation_menu"
+playing = true
+script = ExtResource( 5 )
+
+[node name="Bike_button" type="Button" parent="."]
+modulate = Color( 1, 1, 1, 0 )
+margin_left = -219.787
+margin_top = -249.164
+margin_right = 218.213
+margin_bottom = -90.1639
+rect_pivot_offset = Vector2( 98.0734, 56.0847 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Longboard_button" type="Button" parent="."]
+modulate = Color( 1, 1, 1, 0 )
+margin_left = -219.0
+margin_top = 93.0
+margin_right = 219.0
+margin_bottom = 252.0
+rect_pivot_offset = Vector2( 98.0734, 56.0847 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Foot_button" type="Button" parent="."]
+modulate = Color( 1, 1, 1, 0 )
+margin_left = -220.0
+margin_top = -87.0
+margin_right = 218.0
+margin_bottom = 86.0
+rect_pivot_offset = Vector2( 98.0734, 56.0847 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[connection signal="pressed" from="Bike_button" to="." method="_on_Bike_button_pressed"]
+[connection signal="pressed" from="Longboard_button" to="." method="_on_Longboard_button_pressed"]
+[connection signal="pressed" from="Foot_button" to="." method="_on_Foot_button_pressed"]

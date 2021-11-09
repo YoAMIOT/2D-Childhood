@@ -1,4 +1,4 @@
-[gd_scene load_steps=152 format=2]
+[gd_scene load_steps=153 format=2]
 
 [ext_resource path="res://ressources/player/foot/idle/idle_right.png" type="Texture" id=1]
 [ext_resource path="res://ressources/player/foot/idle/idle_left.png" type="Texture" id=2]
@@ -149,6 +149,7 @@
 [ext_resource path="res://ressources/player/bike/backward/left/left_downward_backward/left_downward_backward1.png" type="Texture" id=147]
 [ext_resource path="res://ressources/player/bike/backward/left/left_upward_backward/left_upward_backward1.png" type="Texture" id=148]
 [ext_resource path="res://ressources/player/bike/backward/left/left_upward_backward/left_upward_backward2.png" type="Texture" id=149]
+[ext_resource path="res://scenes/Phone.tscn" type="PackedScene" id=150]
 
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
@@ -466,7 +467,7 @@ script = ExtResource( 21 )
 
 [node name="Camera2D" type="Camera2D" parent="."]
 current = true
-zoom = Vector2( 0.2, 0.2 )
+zoom = Vector2( 0.35, 0.35 )
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 frames = SubResource( 1 )
@@ -476,3 +477,7 @@ playing = true
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2( 0.5, 7 )
 shape = SubResource( 2 )
+
+[node name="Phone" parent="." instance=ExtResource( 150 )]
+position = Vector2( 137.561, 15.9686 )
+scale = Vector2( 0.35, 0.4 )
