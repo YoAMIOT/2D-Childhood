@@ -1,4 +1,4 @@
-[gd_scene load_steps=146 format=2]
+[gd_scene load_steps=152 format=2]
 
 [ext_resource path="res://ressources/player/foot/idle/idle_right.png" type="Texture" id=1]
 [ext_resource path="res://ressources/player/foot/idle/idle_left.png" type="Texture" id=2]
@@ -143,6 +143,12 @@
 [ext_resource path="res://ressources/player/bike/backward/right/right_upward_backward/right_upward_backward2.png" type="Texture" id=141]
 [ext_resource path="res://ressources/player/bike/backward/right/right_downward_backward/right_downward_backward1.png" type="Texture" id=142]
 [ext_resource path="res://ressources/player/bike/backward/right/right_downward_backward/right_downward_backward2.png" type="Texture" id=143]
+[ext_resource path="res://ressources/player/bike/backward/left/left_backward/left_backward2.png" type="Texture" id=144]
+[ext_resource path="res://ressources/player/bike/backward/left/left_backward/left_backward1.png" type="Texture" id=145]
+[ext_resource path="res://ressources/player/bike/backward/left/left_downward_backward/left_downward_backward2.png" type="Texture" id=146]
+[ext_resource path="res://ressources/player/bike/backward/left/left_downward_backward/left_downward_backward1.png" type="Texture" id=147]
+[ext_resource path="res://ressources/player/bike/backward/left/left_upward_backward/left_upward_backward1.png" type="Texture" id=148]
+[ext_resource path="res://ressources/player/bike/backward/left/left_upward_backward/left_upward_backward2.png" type="Texture" id=149]
 
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
@@ -154,6 +160,16 @@ animations = [ {
 "frames": [ ExtResource( 139 ), ExtResource( 138 ) ],
 "loop": true,
 "name": "bike_backward_right",
+"speed": 3.0
+}, {
+"frames": [ ExtResource( 147 ), ExtResource( 146 ) ],
+"loop": true,
+"name": "bike_backward_left_downward",
+"speed": 3.0
+}, {
+"frames": [ ExtResource( 148 ), ExtResource( 149 ) ],
+"loop": true,
+"name": "bike_backward_left_upward",
 "speed": 3.0
 }, {
 "frames": [ ExtResource( 134 ), ExtResource( 136 ) ],
@@ -169,6 +185,11 @@ animations = [ {
 "frames": [ ExtResource( 140 ), ExtResource( 141 ) ],
 "loop": true,
 "name": "bike_backward_right_upward",
+"speed": 3.0
+}, {
+"frames": [ ExtResource( 145 ), ExtResource( 144 ) ],
+"loop": true,
+"name": "bike_backward_left",
 "speed": 3.0
 }, {
 "frames": [ ExtResource( 107 ), ExtResource( 106 ) ],
@@ -449,8 +470,7 @@ zoom = Vector2( 0.2, 0.2 )
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 frames = SubResource( 1 )
-animation = "bike_backward_right_downward"
-frame = 1
+animation = "bike_backward_left_upward"
 playing = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
