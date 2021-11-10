@@ -1,4 +1,4 @@
-[gd_scene load_steps=181 format=2]
+[gd_scene load_steps=185 format=2]
 
 [ext_resource path="res://ressources/player/foot/idle/idle_right.png" type="Texture" id=1]
 [ext_resource path="res://ressources/player/foot/idle/idle_left.png" type="Texture" id=2]
@@ -178,6 +178,10 @@
 [ext_resource path="res://ressources/player/longboard/moving/downward/downward_left_moving/downward_left_moving2.png" type="Texture" id=176]
 [ext_resource path="res://ressources/player/longboard/moving/downward/downward_right_moving/downward_right_moving2.png" type="Texture" id=177]
 [ext_resource path="res://ressources/player/longboard/moving/downward/downward_right_moving/downward_right_moving1.png" type="Texture" id=178]
+[ext_resource path="res://ressources/player/longboard/moving/left/left_downward_moving/left_downward_moving1.png" type="Texture" id=179]
+[ext_resource path="res://ressources/player/longboard/moving/left/left_downward_moving/left_downward_moving2.png" type="Texture" id=180]
+[ext_resource path="res://ressources/player/longboard/moving/right/right_downward_moving/right_downward_moving1.png" type="Texture" id=181]
+[ext_resource path="res://ressources/player/longboard/moving/right/right_downward_moving/right_downward_moving2.png" type="Texture" id=182]
 
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
@@ -561,9 +565,19 @@ animations = [ {
 "name": "longboard_moving_downward_right",
 "speed": 15.0
 }, {
+"frames": [ ExtResource( 181 ), ExtResource( 182 ) ],
+"loop": true,
+"name": "longboard_moving_right_downward",
+"speed": 15.0
+}, {
 "frames": [ ExtResource( 175 ), ExtResource( 176 ) ],
 "loop": true,
 "name": "longboard_moving_downward_left",
+"speed": 15.0
+}, {
+"frames": [ ExtResource( 179 ), ExtResource( 180 ) ],
+"loop": true,
+"name": "longboard_moving_left_downward",
 "speed": 15.0
 } ]
 
@@ -579,7 +593,7 @@ zoom = Vector2( 0.2, 0.2 )
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 frames = SubResource( 1 )
-animation = "longboard_moving_downward_right"
+animation = "longboard_moving_right_downward"
 frame = 1
 playing = true
 
