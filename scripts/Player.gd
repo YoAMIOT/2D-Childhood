@@ -511,8 +511,14 @@ func getInputOnLongboard():
 			elif longboardActualDir == "left":
 				longboardVirtualRotation = 300;
 			setLongboardRotation();
-	if Input.is_action_just_released("up"):
-		isPushing = false;
+	elif Input.is_action_pressed("down"):
+		if longboardMovingForward == true:
+			if longboardSpeed > 0:
+				isBraking = true;
+				longboardSpeed -= longboardBrake;
+			elif longboardSpeed < 0:
+				longboardSpeed = 0;
+				isBraking = false;
 
 	if Input.is_action_just_pressed("left"):
 		$Timer.start();
@@ -543,15 +549,6 @@ func getInputOnLongboard():
 		longboardMovingForward = false;
 		isBraking = false;
 
-	if Input.is_action_pressed("down"):
-		if longboardMovingForward == true:
-			if longboardSpeed > 0:
-				isBraking = true;
-				longboardSpeed -= longboardBrake;
-			elif longboardSpeed < 0:
-				longboardSpeed = 0;
-				isBraking = false;
-
 	if Input.is_action_just_released("right"):
 		if longboardActualDir.begins_with("downward"):
 			longboardVirtualRotation = 180;
@@ -572,8 +569,13 @@ func getInputOnLongboard():
 		elif longboardActualDir.begins_with("left"):
 			longboardVirtualRotation = 270;
 		setLongboardRotation();
+	if Input.is_action_just_released("up"):
+		isPushing = false;
+	if Input.is_action_just_released("down"):
+		isBraking = false;
 
 	velocity = velocity.normalized() * longboardSpeed;
+	print(velocity)
 
 
 
@@ -704,32 +706,32 @@ func animateOnLongboard():
 		elif isPushing == true:
 			#Down#
 			if longboardActualDir == "downward":
-				$AnimatedSprite.animation = "longboard_idle_downward";
+				$AnimatedSprite.animation = "longboard_moving_downward";
 			elif longboardActualDir == "downward_right":
-				$AnimatedSprite.animation = "longboard_idle_downward";
+				$AnimatedSprite.animation = "longboard_moving_downward";
 			elif longboardActualDir == "downward_left":
-				$AnimatedSprite.animation = "longboard_idle_downward";
+				$AnimatedSprite.animation = "longboard_moving_downward";
 			#Up#
 			elif longboardActualDir == "upward":
-				$AnimatedSprite.animation = "longboard_idle_upward";
+				$AnimatedSprite.animation = "longboard_moving_upward";
 			elif longboardActualDir == "upward_right":
-				$AnimatedSprite.animation = "longboard_idle_upward";
+				$AnimatedSprite.animation = "longboard_moving_upward";
 			elif longboardActualDir == "upward_left":
-				$AnimatedSprite.animation = "longboard_idle_upward";
+				$AnimatedSprite.animation = "longboard_moving_upward";
 			#Right#
 			elif longboardActualDir == "right":
-				$AnimatedSprite.animation = "longboard_idle_right";
+				$AnimatedSprite.animation = "longboard_moving_right";
 			elif longboardActualDir == "right_upward":
-				$AnimatedSprite.animation = "longboard_idle_right";
+				$AnimatedSprite.animation = "longboard_moving_right";
 			elif longboardActualDir == "right_downward":
-				$AnimatedSprite.animation = "longboard_idle_right";
+				$AnimatedSprite.animation = "longboard_moving_right";
 			#Left#
 			elif longboardActualDir == "left":
-				$AnimatedSprite.animation = "longboard_idle_left";
+				$AnimatedSprite.animation = "longboard_moving_left";
 			elif longboardActualDir == "left_upward":
-				$AnimatedSprite.animation = "longboard_idle_left";
+				$AnimatedSprite.animation = "longboard_moving_left";
 			elif longboardActualDir == "left_downward":
-				$AnimatedSprite.animation = "longboard_idle_left";
+				$AnimatedSprite.animation = "longboard_moving_left";
 		elif isPushing == false and isBraking == false:
 			#Down#
 			if longboardActualDir == "downward":
