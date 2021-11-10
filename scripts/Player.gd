@@ -21,6 +21,7 @@ var bikeActualDir : String = "down";
 var movingBackward : bool = false;
 var movingForward : bool = false;
 var isAccelerating: bool = false;
+var bikeBraking : bool = false;
 
 #Longboard Variables#
 var longboardSpeed : float = 0;
@@ -223,8 +224,17 @@ func getInputOnBike():
 			bikeSpeed += bikeAcceleration;
 		elif bikeSpeed > bikeMaxSpeed:
 			bikeSpeed = bikeMaxSpeed;
-	if Input.is_action_just_released("up"):
-		isAccelerating = false;
+	elif Input.is_action_pressed("down"):
+		if movingForward == true:
+			bikeBraking = true;
+			if bikeSpeed > 0:
+				bikeSpeed -= bikeBrake;
+			elif bikeSpeed < 0:
+				bikeSpeed = 0;
+				bikeBraking = false;
+		if movingForward == false:
+			velocity = manageBikeDirection() * -1;
+			movingBackward = true;
 
 	if bikeSpeed > 0:
 		movingForward = true;
@@ -238,17 +248,12 @@ func getInputOnBike():
 		movingForward = false;
 		$AnimatedSprite.speed_scale = 1;
 
-	if Input.is_action_pressed("down"):
-		if movingForward == true:
-			if bikeSpeed > 0:
-				bikeSpeed -= bikeBrake;
-			elif bikeSpeed < 0:
-				bikeSpeed = 0;
-		if movingForward == false:
-			velocity = manageBikeDirection() * -1;
-			movingBackward = true;
-	if Input.is_action_just_released("down") and bikeSpeed == 0:
-		movingBackward = false;
+	if Input.is_action_just_released("up"):
+		isAccelerating = false;
+	if Input.is_action_just_released("down"):
+		bikeBraking = true;
+		if bikeSpeed == 0:
+			movingBackward = false;
 
 	if movingForward:
 		velocity = velocity.normalized() * bikeSpeed;
@@ -575,7 +580,6 @@ func getInputOnLongboard():
 		isBraking = false;
 
 	velocity = velocity.normalized() * longboardSpeed;
-	print(velocity)
 
 
 
@@ -715,9 +719,9 @@ func animateOnLongboard():
 			elif longboardActualDir == "upward":
 				$AnimatedSprite.animation = "longboard_moving_upward";
 			elif longboardActualDir == "upward_right":
-				$AnimatedSprite.animation = "longboard_moving_upward";
+				$AnimatedSprite.animation = "longboard_moving_upward_right";
 			elif longboardActualDir == "upward_left":
-				$AnimatedSprite.animation = "longboard_moving_upward";
+				$AnimatedSprite.animation = "longboard_moving_upward_left";
 			#Right#
 			elif longboardActualDir == "right":
 				$AnimatedSprite.animation = "longboard_moving_right";
@@ -744,9 +748,9 @@ func animateOnLongboard():
 			elif longboardActualDir == "upward":
 				$AnimatedSprite.animation = "longboard_moving_upward";
 			elif longboardActualDir == "upward_right":
-				$AnimatedSprite.animation = "longboard_moving_upward";
+				$AnimatedSprite.animation = "longboard_moving_upward_right";
 			elif longboardActualDir == "upward_left":
-				$AnimatedSprite.animation = "longboard_moving_upward";
+				$AnimatedSprite.animation = "longboard_moving_upward_left";
 			#Right#
 			elif longboardActualDir == "right":
 				$AnimatedSprite.animation = "longboard_moving_right";
