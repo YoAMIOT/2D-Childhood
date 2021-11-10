@@ -712,9 +712,9 @@ func animateOnLongboard():
 			if longboardActualDir == "downward":
 				$AnimatedSprite.animation = "longboard_moving_downward";
 			elif longboardActualDir == "downward_right":
-				$AnimatedSprite.animation = "longboard_moving_downward";
+				$AnimatedSprite.animation = "longboard_moving_downward_right";
 			elif longboardActualDir == "downward_left":
-				$AnimatedSprite.animation = "longboard_moving_downward";
+				$AnimatedSprite.animation = "longboard_moving_downward_left";
 			#Up#
 			elif longboardActualDir == "upward":
 				$AnimatedSprite.animation = "longboard_moving_upward";
@@ -741,9 +741,9 @@ func animateOnLongboard():
 			if longboardActualDir == "downward":
 				$AnimatedSprite.animation = "longboard_moving_downward";
 			elif longboardActualDir == "downward_right":
-				$AnimatedSprite.animation = "longboard_moving_downward";
+				$AnimatedSprite.animation = "longboard_moving_downward_right";
 			elif longboardActualDir == "downward_left":
-				$AnimatedSprite.animation = "longboard_moving_downward";
+				$AnimatedSprite.animation = "longboard_moving_downward_left";
 			#Up#
 			elif longboardActualDir == "upward":
 				$AnimatedSprite.animation = "longboard_moving_upward";
