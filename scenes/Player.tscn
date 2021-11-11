@@ -1,4 +1,4 @@
-[gd_scene load_steps=189 format=2]
+[gd_scene load_steps=193 format=2]
 
 [ext_resource path="res://ressources/player/foot/idle/idle_right.png" type="Texture" id=1]
 [ext_resource path="res://ressources/player/foot/idle/idle_left.png" type="Texture" id=2]
@@ -186,6 +186,10 @@
 [ext_resource path="res://ressources/player/longboard/moving/right/right_upward_moving/right_upward_moving2.png" type="Texture" id=184]
 [ext_resource path="res://ressources/player/longboard/moving/left/left_upward_moving/left_upward_moving1.png" type="Texture" id=185]
 [ext_resource path="res://ressources/player/longboard/moving/left/left_upward_moving/left_upward_moving2.png" type="Texture" id=186]
+[ext_resource path="res://ressources/player/longboard/braking/upward/upward_right_braking/upward_right_braking2.png" type="Texture" id=187]
+[ext_resource path="res://ressources/player/longboard/braking/upward/upward_right_braking/upward_right_braking1.png" type="Texture" id=188]
+[ext_resource path="res://ressources/player/longboard/braking/upward/upward_left_braking/upward_left_braking1.png" type="Texture" id=189]
+[ext_resource path="res://ressources/player/longboard/braking/upward/upward_left_braking/upward_left_braking2.png" type="Texture" id=190]
 
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
@@ -584,6 +588,16 @@ animations = [ {
 "name": "longboard_moving_downward_right",
 "speed": 15.0
 }, {
+"frames": [ ExtResource( 188 ), ExtResource( 187 ) ],
+"loop": true,
+"name": "longboard_braking_upward_right",
+"speed": 15.0
+}, {
+"frames": [ ExtResource( 189 ), ExtResource( 190 ) ],
+"loop": true,
+"name": "longboard_braking_upward_left",
+"speed": 15.0
+}, {
 "frames": [ ExtResource( 183 ), ExtResource( 184 ) ],
 "loop": true,
 "name": "longboard_moving_right_upward",
@@ -607,7 +621,7 @@ zoom = Vector2( 0.2, 0.2 )
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 frames = SubResource( 1 )
-animation = "longboard_moving_left_upward"
+animation = "longboard_braking_upward_left"
 playing = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

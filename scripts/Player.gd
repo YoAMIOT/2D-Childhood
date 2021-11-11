@@ -424,7 +424,7 @@ func animateOnBike():
 				$AnimatedSprite.animation = "bike_braking_left_upward";
 			elif bikeActualDir == "left_down":
 				$AnimatedSprite.animation = "bike_braking_left_downward";
-		manageAnimationSpeedScale();
+		manageAnimationSpeedScale(bikeSpeed);
 	if movingBackward == true:
 		#Down#
 		if bikeActualDir == "down":
@@ -457,35 +457,6 @@ func animateOnBike():
 
 
 
-#Function to manage the speed of an animation#
-func manageAnimationSpeedScale():
-	if bikeSpeed > 0 and bikeSpeed < 20:
-		$AnimatedSprite.speed_scale = 0.4;
-	elif bikeSpeed >= 20 and bikeSpeed < 40:
-		$AnimatedSprite.speed_scale = 0.5;
-	elif bikeSpeed >= 40 and bikeSpeed < 60:
-		$AnimatedSprite.speed_scale = 0.6;
-	elif bikeSpeed >= 60 and bikeSpeed < 70:
-		$AnimatedSprite.speed_scale = 0.7;
-	elif bikeSpeed >= 70 and bikeSpeed < 80:
-		$AnimatedSprite.speed_scale = 0.8;
-	elif bikeSpeed >= 80 and bikeSpeed < 90:
-		$AnimatedSprite.speed_scale = 0.9;
-	elif bikeSpeed >= 90 and bikeSpeed < 100:
-		$AnimatedSprite.speed_scale = 1;
-	elif bikeSpeed >= 100 and bikeSpeed < 110:
-		$AnimatedSprite.speed_scale = 1.1;
-	elif bikeSpeed >= 110 and bikeSpeed < 120:
-		$AnimatedSprite.speed_scale = 1.2;
-	elif bikeSpeed >= 120 and bikeSpeed < 130:
-		$AnimatedSprite.speed_scale = 1.3;
-	elif bikeSpeed >= 130 and bikeSpeed < 140:
-		$AnimatedSprite.speed_scale = 1.4;
-	elif bikeSpeed >= 140 and bikeSpeed <= 150:
-		$AnimatedSprite.speed_scale = 1.5;
-
-
-
 #Function to get the input of the player on bike#
 func getInputOnLongboard():
 	velocity = Vector2.ZERO;
@@ -510,6 +481,8 @@ func getInputOnLongboard():
 		doubleTapLeft +=1;
 		if doubleTapLeft == 2:
 			doubleTapLeft = 0;
+			$Timer.stop();
+			$Timer.wait_time = 0.5;
 			if longboardActualDir.begins_with("right") == false:
 				longboardVirtualRotation -= 90;
 			elif longboardActualDir.begins_with("right") == true:
@@ -520,6 +493,8 @@ func getInputOnLongboard():
 		doubleTapRight +=1;
 		if doubleTapRight == 2:
 			doubleTapRight = 0;
+			$Timer.stop();
+			$Timer.wait_time = 0.5;
 			longboardVirtualRotation += 90;
 			setLongboardRotation();
 
@@ -690,9 +665,9 @@ func animateOnLongboard():
 			elif longboardActualDir == "upward":
 				$AnimatedSprite.animation = "longboard_braking_upward";
 			elif longboardActualDir == "upward_right":
-				$AnimatedSprite.animation = "longboard_braking_upward";
+				$AnimatedSprite.animation = "longboard_braking_upward_right";
 			elif longboardActualDir == "upward_left":
-				$AnimatedSprite.animation = "longboard_braking_upward";
+				$AnimatedSprite.animation = "longboard_braking_upward_left";
 			#Right#
 			elif longboardActualDir == "right":
 				$AnimatedSprite.animation = "longboard_braking_right";
@@ -765,39 +740,39 @@ func animateOnLongboard():
 				$AnimatedSprite.animation = "longboard_moving_left_upward";
 			elif longboardActualDir == "left_downward":
 				$AnimatedSprite.animation = "longboard_moving_left_downward";
-		manageAnimationSpeedScaleForLongboard();
+		manageAnimationSpeedScale(longboardSpeed);
 
 
 
 #Function to manage the speed of an animation#
-func manageAnimationSpeedScaleForLongboard():
-	if longboardSpeed > 0 and longboardSpeed < 20:
+func manageAnimationSpeedScale(var transportationSpeed : float):
+	if transportationSpeed > 0 and transportationSpeed < 20:
 		$AnimatedSprite.speed_scale = 0.4;
-	elif longboardSpeed >= 20 and longboardSpeed < 40:
+	elif transportationSpeed >= 20 and transportationSpeed < 40:
 		$AnimatedSprite.speed_scale = 0.5;
-	elif longboardSpeed >= 40 and longboardSpeed < 60:
+	elif transportationSpeed >= 40 and transportationSpeed < 60:
 		$AnimatedSprite.speed_scale = 0.6;
-	elif longboardSpeed >= 60 and longboardSpeed < 70:
+	elif transportationSpeed >= 60 and transportationSpeed < 70:
 		$AnimatedSprite.speed_scale = 0.7;
-	elif longboardSpeed >= 70 and longboardSpeed < 80:
+	elif transportationSpeed >= 70 and transportationSpeed < 80:
 		$AnimatedSprite.speed_scale = 0.8;
-	elif longboardSpeed >= 80 and longboardSpeed < 90:
+	elif transportationSpeed >= 80 and transportationSpeed < 90:
 		$AnimatedSprite.speed_scale = 0.9;
-	elif longboardSpeed >= 90 and longboardSpeed < 100:
+	elif transportationSpeed >= 90 and transportationSpeed < 100:
 		$AnimatedSprite.speed_scale = 1;
-	elif longboardSpeed >= 100 and longboardSpeed < 110:
+	elif transportationSpeed >= 100 and transportationSpeed < 110:
 		$AnimatedSprite.speed_scale = 1.1;
-	elif longboardSpeed >= 110 and longboardSpeed < 120:
+	elif transportationSpeed >= 110 and transportationSpeed < 120:
 		$AnimatedSprite.speed_scale = 1.2;
-	elif longboardSpeed >= 120 and longboardSpeed < 130:
+	elif transportationSpeed >= 120 and transportationSpeed < 130:
 		$AnimatedSprite.speed_scale = 1.3;
-	elif longboardSpeed >= 130 and longboardSpeed < 140:
+	elif transportationSpeed >= 130 and transportationSpeed < 140:
 		$AnimatedSprite.speed_scale = 1.4;
-	elif longboardSpeed >= 140 and longboardSpeed < 150:
+	elif transportationSpeed >= 140 and transportationSpeed < 150:
 		$AnimatedSprite.speed_scale = 1.5;
-	elif longboardSpeed >= 150 and longboardSpeed < 160:
+	elif transportationSpeed >= 150 and transportationSpeed < 160:
 		$AnimatedSprite.speed_scale = 1.6;
-	elif longboardSpeed >= 160 and longboardSpeed < 170:
+	elif transportationSpeed >= 160 and transportationSpeed < 170:
 		$AnimatedSprite.speed_scale = 1.7;
-	elif longboardSpeed >= 170 and longboardSpeed <= 180:
+	elif transportationSpeed >= 170 and transportationSpeed <= 180:
 		$AnimatedSprite.speed_scale = 1.8;

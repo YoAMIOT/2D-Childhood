@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/longboard.png-3652a3563524df56a1dba6a9a2d8a903.stex"
+path="res://.import/upward_right_braking2.png-520551dae556c213ded380454e3a0dda.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://ressources/player/longboard/longboard.png"
-dest_files=[ "res://.import/longboard.png-3652a3563524df56a1dba6a9a2d8a903.stex" ]
+source_file="res://ressources/player/longboard/braking/upward/upward_right_braking/upward_right_braking2.png"
+dest_files=[ "res://.import/upward_right_braking2.png-520551dae556c213ded380454e3a0dda.stex" ]
 
 [params]
 
