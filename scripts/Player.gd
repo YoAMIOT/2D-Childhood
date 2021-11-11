@@ -496,26 +496,6 @@ func getInputOnLongboard():
 			longboardSpeed += longboardAcceleration;
 		elif longboardSpeed > longboardMaxSpeed:
 			longboardSpeed = longboardMaxSpeed;
-		if Input.is_action_pressed("left"):
-			if longboardActualDir == "downward":
-				longboardVirtualRotation = 150;
-			elif longboardActualDir == "upward":
-				longboardVirtualRotation = 330;
-			elif longboardActualDir == "right":
-				longboardVirtualRotation = 60;
-			elif longboardActualDir == "left":
-				longboardVirtualRotation = 240;
-			setLongboardRotation();
-		elif Input.is_action_pressed("right"):
-			if longboardActualDir == "downward":
-				longboardVirtualRotation = 210;
-			elif longboardActualDir == "upward":
-				longboardVirtualRotation = 30;
-			elif longboardActualDir == "right":
-				longboardVirtualRotation = 120;
-			elif longboardActualDir == "left":
-				longboardVirtualRotation = 300;
-			setLongboardRotation();
 	elif Input.is_action_pressed("down"):
 		if longboardMovingForward == true:
 			if longboardSpeed > 0:
@@ -544,6 +524,26 @@ func getInputOnLongboard():
 			setLongboardRotation();
 
 	if longboardSpeed > 0:
+		if Input.is_action_pressed("left"):
+			if longboardActualDir == "downward":
+				longboardVirtualRotation = 150;
+			elif longboardActualDir == "upward":
+				longboardVirtualRotation = 330;
+			elif longboardActualDir == "right":
+				longboardVirtualRotation = 60;
+			elif longboardActualDir == "left":
+				longboardVirtualRotation = 240;
+			setLongboardRotation();
+		elif Input.is_action_pressed("right"):
+			if longboardActualDir == "downward":
+				longboardVirtualRotation = 210;
+			elif longboardActualDir == "upward":
+				longboardVirtualRotation = 30;
+			elif longboardActualDir == "right":
+				longboardVirtualRotation = 120;
+			elif longboardActualDir == "left":
+				longboardVirtualRotation = 300;
+			setLongboardRotation();
 		longboardMovingForward = true;
 		velocity = manageLongboardDirection();
 		if isPushing == false:
@@ -726,14 +726,14 @@ func animateOnLongboard():
 			elif longboardActualDir == "right":
 				$AnimatedSprite.animation = "longboard_moving_right";
 			elif longboardActualDir == "right_upward":
-				$AnimatedSprite.animation = "longboard_moving_right";
+				$AnimatedSprite.animation = "longboard_moving_right_upward";
 			elif longboardActualDir == "right_downward":
 				$AnimatedSprite.animation = "longboard_moving_right_downward";
 			#Left#
 			elif longboardActualDir == "left":
 				$AnimatedSprite.animation = "longboard_moving_left";
 			elif longboardActualDir == "left_upward":
-				$AnimatedSprite.animation = "longboard_moving_left";
+				$AnimatedSprite.animation = "longboard_moving_left_upward";
 			elif longboardActualDir == "left_downward":
 				$AnimatedSprite.animation = "longboard_moving_left_downward";
 		elif isPushing == false and isBraking == false:
@@ -755,14 +755,14 @@ func animateOnLongboard():
 			elif longboardActualDir == "right":
 				$AnimatedSprite.animation = "longboard_moving_right";
 			elif longboardActualDir == "right_upward":
-				$AnimatedSprite.animation = "longboard_moving_right";
+				$AnimatedSprite.animation = "longboard_moving_right_upward";
 			elif longboardActualDir == "right_downward":
 				$AnimatedSprite.animation = "longboard_moving_right_downward";
 			#Left#
 			elif longboardActualDir == "left":
 				$AnimatedSprite.animation = "longboard_moving_left";
 			elif longboardActualDir == "left_upward":
-				$AnimatedSprite.animation = "longboard_moving_left";
+				$AnimatedSprite.animation = "longboard_moving_left_upward";
 			elif longboardActualDir == "left_downward":
 				$AnimatedSprite.animation = "longboard_moving_left_downward";
 		manageAnimationSpeedScaleForLongboard();
