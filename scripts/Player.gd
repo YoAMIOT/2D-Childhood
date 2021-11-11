@@ -478,6 +478,7 @@ func getInputOnLongboard():
 
 	if Input.is_action_just_pressed("left"):
 		$Timer.start();
+		doubleTapRight = 0;
 		doubleTapLeft +=1;
 		if doubleTapLeft == 2:
 			doubleTapLeft = 0;
@@ -490,6 +491,7 @@ func getInputOnLongboard():
 			setLongboardRotation();
 	if Input.is_action_just_pressed("right"):
 		$Timer.start();
+		doubleTapLeft = 0;
 		doubleTapRight +=1;
 		if doubleTapRight == 2:
 			doubleTapRight = 0;
@@ -658,9 +660,9 @@ func animateOnLongboard():
 			if longboardActualDir == "downward":
 				$AnimatedSprite.animation = "longboard_braking_downward";
 			elif longboardActualDir == "downward_right":
-				$AnimatedSprite.animation = "longboard_braking_downward";
+				$AnimatedSprite.animation = "longboard_braking_downward_right";
 			elif longboardActualDir == "downward_left":
-				$AnimatedSprite.animation = "longboard_braking_downward";
+				$AnimatedSprite.animation = "longboard_braking_downward_left";
 			#Up#
 			elif longboardActualDir == "upward":
 				$AnimatedSprite.animation = "longboard_braking_upward";
@@ -672,16 +674,16 @@ func animateOnLongboard():
 			elif longboardActualDir == "right":
 				$AnimatedSprite.animation = "longboard_braking_right";
 			elif longboardActualDir == "right_upward":
-				$AnimatedSprite.animation = "longboard_braking_right";
+				$AnimatedSprite.animation = "longboard_braking_right_upward";
 			elif longboardActualDir == "right_downward":
-				$AnimatedSprite.animation = "longboard_braking_right";
+				$AnimatedSprite.animation = "longboard_braking_right_downward";
 			#Left#
 			elif longboardActualDir == "left":
 				$AnimatedSprite.animation = "longboard_braking_left";
 			elif longboardActualDir == "left_upward":
 				$AnimatedSprite.animation = "longboard_braking_left";
 			elif longboardActualDir == "left_downward":
-				$AnimatedSprite.animation = "longboard_braking_left";
+				$AnimatedSprite.animation = "longboard_braking_left_downward";
 		elif isPushing == true:
 			#Down#
 			if longboardActualDir == "downward":
