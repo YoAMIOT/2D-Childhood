@@ -681,7 +681,7 @@ func animateOnLongboard():
 			elif longboardActualDir == "left":
 				$AnimatedSprite.animation = "longboard_braking_left";
 			elif longboardActualDir == "left_upward":
-				$AnimatedSprite.animation = "longboard_braking_left";
+				$AnimatedSprite.animation = "longboard_braking_left_upward";
 			elif longboardActualDir == "left_downward":
 				$AnimatedSprite.animation = "longboard_braking_left_downward";
 		elif isPushing == true:

@@ -1,4 +1,4 @@
-[gd_scene load_steps=203 format=2]
+[gd_scene load_steps=205 format=2]
 
 [ext_resource path="res://ressources/player/foot/idle/idle_right.png" type="Texture" id=1]
 [ext_resource path="res://ressources/player/foot/idle/idle_left.png" type="Texture" id=2]
@@ -200,6 +200,8 @@
 [ext_resource path="res://ressources/player/longboard/braking/right/right_downward_braking/right_downward_braking1.png" type="Texture" id=198]
 [ext_resource path="res://ressources/player/longboard/braking/left/left_downward_braking/left_downward_braking1.png" type="Texture" id=199]
 [ext_resource path="res://ressources/player/longboard/braking/left/left_downward_braking/left_downward_braking2.png" type="Texture" id=200]
+[ext_resource path="res://ressources/player/longboard/braking/left/left_upward_braking/left_upward_braking1.png" type="Texture" id=201]
+[ext_resource path="res://ressources/player/longboard/braking/left/left_upward_braking/left_upward_braking2.png" type="Texture" id=202]
 
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
@@ -208,9 +210,69 @@ animations = [ {
 "name": "longboard_braking_right_upward",
 "speed": 15.0
 }, {
-"frames": [ ExtResource( 109 ), ExtResource( 108 ) ],
+"frames": [ ExtResource( 30 ), ExtResource( 29 ), ExtResource( 27 ), ExtResource( 28 ) ],
 "loop": true,
-"name": "bike_braking_left_downward",
+"name": "foot_run_left",
+"speed": 8.0
+}, {
+"frames": [ ExtResource( 113 ), ExtResource( 112 ) ],
+"loop": true,
+"name": "bike_braking_left_upward",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 157 ), ExtResource( 158 ) ],
+"loop": true,
+"name": "longboard_braking_left",
+"speed": 15.0
+}, {
+"frames": [ ExtResource( 118 ), ExtResource( 119 ) ],
+"loop": true,
+"name": "bike_braking_downward",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 66 ) ],
+"loop": true,
+"name": "bike_idle_upward_right",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 173 ), ExtResource( 174 ) ],
+"loop": true,
+"name": "longboard_moving_upward_left",
+"speed": 15.0
+}, {
+"frames": [ ExtResource( 122 ), ExtResource( 123 ) ],
+"loop": true,
+"name": "bike_braking_upward_left",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 71 ), ExtResource( 73 ), ExtResource( 72 ), ExtResource( 70 ) ],
+"loop": true,
+"name": "bike_slow_pace_upward_left",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 41 ), ExtResource( 38 ), ExtResource( 39 ), ExtResource( 40 ) ],
+"loop": true,
+"name": "foot_idle_impatient",
+"speed": 10.0
+}, {
+"frames": [ ExtResource( 139 ), ExtResource( 138 ) ],
+"loop": true,
+"name": "bike_backward_right",
+"speed": 3.0
+}, {
+"frames": [ ExtResource( 2 ) ],
+"loop": true,
+"name": "foot_idle_left",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 47 ), ExtResource( 57 ), ExtResource( 54 ), ExtResource( 53 ) ],
+"loop": true,
+"name": "bike_slow_pace_upward",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 75 ), ExtResource( 74 ), ExtResource( 76 ), ExtResource( 77 ) ],
+"loop": true,
+"name": "bike_slow_pace_upward_right",
 "speed": 5.0
 }, {
 "frames": [ ExtResource( 4 ) ],
@@ -218,14 +280,14 @@ animations = [ {
 "name": "foot_idle_downward",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 101 ), ExtResource( 99 ), ExtResource( 100 ), ExtResource( 98 ) ],
+"frames": [ ExtResource( 62 ) ],
 "loop": true,
-"name": "bike_slow_pace_left_upward",
+"name": "bike_idle_left_down",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 122 ), ExtResource( 123 ) ],
+"frames": [ ExtResource( 42 ) ],
 "loop": true,
-"name": "bike_braking_upward_left",
+"name": "bike_idle_upward",
 "speed": 5.0
 }, {
 "frames": [ ExtResource( 105 ), ExtResource( 102 ) ],
@@ -233,29 +295,39 @@ animations = [ {
 "name": "bike_braking_right",
 "speed": 5.0
 }, {
+"frames": [ ExtResource( 172 ), ExtResource( 171 ) ],
+"loop": true,
+"name": "longboard_moving_upward_right",
+"speed": 15.0
+}, {
+"frames": [ ExtResource( 91 ), ExtResource( 93 ), ExtResource( 92 ), ExtResource( 90 ) ],
+"loop": true,
+"name": "bike_slow_pace_left_downward",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 43 ) ],
+"loop": true,
+"name": "bike_idle_left",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 162 ), ExtResource( 161 ) ],
+"loop": true,
+"name": "longboard_braking_upward",
+"speed": 15.0
+}, {
+"frames": [ ExtResource( 107 ), ExtResource( 106 ) ],
+"loop": true,
+"name": "bike_braking_right_upward",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 109 ), ExtResource( 108 ) ],
+"loop": true,
+"name": "bike_braking_left_downward",
+"speed": 5.0
+}, {
 "frames": [ ExtResource( 124 ), ExtResource( 125 ) ],
 "loop": true,
 "name": "bike_braking_upward_right",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 128 ), ExtResource( 129 ) ],
-"loop": true,
-"name": "bike_backward_downward_right",
-"speed": 3.0
-}, {
-"frames": [ ExtResource( 71 ), ExtResource( 73 ), ExtResource( 72 ), ExtResource( 70 ) ],
-"loop": true,
-"name": "bike_slow_pace_upward_left",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 2 ) ],
-"loop": true,
-"name": "foot_idle_left",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 69 ) ],
-"loop": true,
-"name": "bike_idle_downward_left",
 "speed": 5.0
 }, {
 "frames": [ ExtResource( 45 ) ],
@@ -268,104 +340,24 @@ animations = [ {
 "name": "bike_backward_right_upward",
 "speed": 3.0
 }, {
-"frames": [ ExtResource( 110 ), ExtResource( 111 ) ],
-"loop": true,
-"name": "bike_braking_left",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 134 ), ExtResource( 136 ) ],
-"loop": true,
-"name": "bike_backward_upward_left",
-"speed": 3.0
-}, {
-"frames": [ ExtResource( 41 ), ExtResource( 38 ), ExtResource( 39 ), ExtResource( 40 ) ],
-"loop": true,
-"name": "foot_idle_impatient",
-"speed": 10.0
-}, {
-"frames": [ ExtResource( 181 ), ExtResource( 182 ) ],
-"loop": true,
-"name": "longboard_moving_right_downward",
-"speed": 15.0
-}, {
 "frames": [ ExtResource( 147 ), ExtResource( 146 ) ],
 "loop": true,
 "name": "bike_backward_left_downward",
 "speed": 3.0
-}, {
-"frames": [ ExtResource( 65 ) ],
-"loop": true,
-"name": "bike_idle_right_up",
-"speed": 5.0
 }, {
 "frames": [ ExtResource( 153 ) ],
 "loop": true,
 "name": "longboard_idle_right",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 62 ) ],
+"frames": [ ExtResource( 110 ), ExtResource( 111 ) ],
 "loop": true,
-"name": "bike_idle_left_down",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 11 ), ExtResource( 19 ), ExtResource( 7 ), ExtResource( 20 ) ],
-"loop": true,
-"name": "foot_walk_upward",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 43 ) ],
-"loop": true,
-"name": "bike_idle_left",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 152 ) ],
-"loop": true,
-"name": "longboard_idle_upward",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 139 ), ExtResource( 138 ) ],
-"loop": true,
-"name": "bike_backward_right",
-"speed": 3.0
-}, {
-"frames": [ ExtResource( 23 ), ExtResource( 24 ), ExtResource( 25 ), ExtResource( 26 ) ],
-"loop": true,
-"name": "foot_run_right",
-"speed": 8.0
-}, {
-"frames": [ ExtResource( 127 ), ExtResource( 126 ) ],
-"loop": true,
-"name": "bike_backward_downward",
-"speed": 3.0
-}, {
-"frames": [ ExtResource( 114 ), ExtResource( 115 ) ],
-"loop": true,
-"name": "bike_braking_downward_left",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 30 ), ExtResource( 29 ), ExtResource( 27 ), ExtResource( 28 ) ],
-"loop": true,
-"name": "foot_run_left",
-"speed": 8.0
-}, {
-"frames": [ ExtResource( 91 ), ExtResource( 93 ), ExtResource( 92 ), ExtResource( 90 ) ],
-"loop": true,
-"name": "bike_slow_pace_left_downward",
+"name": "bike_braking_left",
 "speed": 5.0
 }, {
 "frames": [ ExtResource( 63 ) ],
 "loop": true,
 "name": "bike_idle_right_down",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 47 ), ExtResource( 57 ), ExtResource( 54 ), ExtResource( 53 ) ],
-"loop": true,
-"name": "bike_slow_pace_upward",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 118 ), ExtResource( 119 ) ],
-"loop": true,
-"name": "bike_braking_downward",
 "speed": 5.0
 }, {
 "frames": [ ExtResource( 167 ), ExtResource( 168 ) ],
@@ -376,26 +368,6 @@ animations = [ {
 "frames": [ ExtResource( 163 ), ExtResource( 164 ) ],
 "loop": true,
 "name": "longboard_moving_upward",
-"speed": 15.0
-}, {
-"frames": [ ExtResource( 113 ), ExtResource( 112 ) ],
-"loop": true,
-"name": "bike_braking_left_upward",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 75 ), ExtResource( 74 ), ExtResource( 76 ), ExtResource( 77 ) ],
-"loop": true,
-"name": "bike_slow_pace_upward_right",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 162 ), ExtResource( 161 ) ],
-"loop": true,
-"name": "longboard_braking_upward",
-"speed": 15.0
-}, {
-"frames": [ ExtResource( 157 ), ExtResource( 158 ) ],
-"loop": true,
-"name": "longboard_braking_left",
 "speed": 15.0
 }, {
 "frames": [ ExtResource( 131 ), ExtResource( 130 ) ],
@@ -413,46 +385,6 @@ animations = [ {
 "name": "bike_braking_right_downward",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 151 ) ],
-"loop": true,
-"name": "longboard_idle_downward",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 145 ), ExtResource( 144 ) ],
-"loop": true,
-"name": "bike_backward_left",
-"speed": 3.0
-}, {
-"frames": [ ExtResource( 42 ) ],
-"loop": true,
-"name": "bike_idle_upward",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 172 ), ExtResource( 171 ) ],
-"loop": true,
-"name": "longboard_moving_upward_right",
-"speed": 15.0
-}, {
-"frames": [ ExtResource( 66 ) ],
-"loop": true,
-"name": "bike_idle_upward_right",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 96 ), ExtResource( 94 ), ExtResource( 95 ), ExtResource( 97 ) ],
-"loop": true,
-"name": "bike_slow_pace_right_upward",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 1 ) ],
-"loop": true,
-"name": "foot_idle_right",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 107 ), ExtResource( 106 ) ],
-"loop": true,
-"name": "bike_braking_right_upward",
-"speed": 5.0
-}, {
 "frames": [ ExtResource( 156 ), ExtResource( 155 ) ],
 "loop": true,
 "name": "longboard_braking_downward",
@@ -463,114 +395,159 @@ animations = [ {
 "name": "longboard_moving_downward",
 "speed": 15.0
 }, {
-"frames": [ ExtResource( 173 ), ExtResource( 174 ) ],
-"loop": true,
-"name": "longboard_moving_upward_left",
-"speed": 15.0
-}, {
 "frames": [ ExtResource( 160 ), ExtResource( 159 ) ],
 "loop": true,
 "name": "longboard_braking_right",
 "speed": 15.0
 }, {
-"frames": [ ExtResource( 14 ), ExtResource( 18 ), ExtResource( 10 ), ExtResource( 16 ) ],
+"frames": [ ExtResource( 1 ) ],
 "loop": true,
-"name": "foot_walk_left",
+"name": "foot_idle_right",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 178 ), ExtResource( 177 ) ],
+"frames": [ ExtResource( 151 ) ],
 "loop": true,
-"name": "longboard_moving_downward_right",
-"speed": 15.0
-}, {
-"frames": [ ExtResource( 56 ), ExtResource( 59 ), ExtResource( 50 ), ExtResource( 58 ) ],
-"loop": true,
-"name": "bike_slow_pace_right",
+"name": "longboard_idle_downward",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 36 ), ExtResource( 35 ), ExtResource( 34 ), ExtResource( 37 ) ],
+"frames": [ ExtResource( 128 ), ExtResource( 129 ) ],
 "loop": true,
-"name": "foot_run_downward",
+"name": "bike_backward_downward_right",
+"speed": 3.0
+}, {
+"frames": [ ExtResource( 23 ), ExtResource( 24 ), ExtResource( 25 ), ExtResource( 26 ) ],
+"loop": true,
+"name": "foot_run_right",
 "speed": 8.0
 }, {
-"frames": [ ExtResource( 148 ), ExtResource( 149 ) ],
+"frames": [ ExtResource( 145 ), ExtResource( 144 ) ],
 "loop": true,
-"name": "bike_backward_left_upward",
+"name": "bike_backward_left",
 "speed": 3.0
 }, {
-"frames": [ ExtResource( 13 ), ExtResource( 8 ), ExtResource( 17 ), ExtResource( 9 ) ],
+"frames": [ ExtResource( 181 ), ExtResource( 182 ) ],
 "loop": true,
-"name": "foot_walk_right",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 51 ), ExtResource( 46 ), ExtResource( 60 ), ExtResource( 48 ) ],
-"loop": true,
-"name": "bike_slow_pace_left",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 169 ), ExtResource( 170 ) ],
-"loop": true,
-"name": "longboard_moving_left",
+"name": "longboard_moving_right_downward",
 "speed": 15.0
 }, {
-"frames": [ ExtResource( 142 ), ExtResource( 143 ) ],
+"frames": [ ExtResource( 152 ) ],
 "loop": true,
-"name": "bike_backward_right_downward",
+"name": "longboard_idle_upward",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 69 ) ],
+"loop": true,
+"name": "bike_idle_downward_left",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 134 ), ExtResource( 136 ) ],
+"loop": true,
+"name": "bike_backward_upward_left",
 "speed": 3.0
 }, {
-"frames": [ ExtResource( 84 ), ExtResource( 85 ), ExtResource( 83 ), ExtResource( 82 ) ],
+"frames": [ ExtResource( 114 ), ExtResource( 115 ) ],
 "loop": true,
-"name": "bike_slow_pace_downward_left",
+"name": "bike_braking_downward_left",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 117 ), ExtResource( 116 ) ],
+"frames": [ ExtResource( 96 ), ExtResource( 94 ), ExtResource( 95 ), ExtResource( 97 ) ],
 "loop": true,
-"name": "bike_braking_downward_right",
+"name": "bike_slow_pace_right_upward",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 44 ) ],
+"frames": [ ExtResource( 101 ), ExtResource( 99 ), ExtResource( 100 ), ExtResource( 98 ) ],
 "loop": true,
-"name": "bike_idle_downward",
+"name": "bike_slow_pace_left_upward",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 67 ) ],
+"frames": [ ExtResource( 65 ) ],
 "loop": true,
-"name": "bike_idle_upward_left",
+"name": "bike_idle_right_up",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 133 ), ExtResource( 132 ) ],
+"frames": [ ExtResource( 11 ), ExtResource( 19 ), ExtResource( 7 ), ExtResource( 20 ) ],
 "loop": true,
-"name": "bike_backward_upward",
+"name": "foot_walk_upward",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 127 ), ExtResource( 126 ) ],
+"loop": true,
+"name": "bike_backward_downward",
 "speed": 3.0
 }, {
-"frames": [ ExtResource( 68 ) ],
+"frames": [ ExtResource( 199 ), ExtResource( 200 ) ],
 "loop": true,
-"name": "bike_idle_downward_right",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 64 ) ],
-"loop": true,
-"name": "bike_idle_left_up",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 80 ), ExtResource( 78 ), ExtResource( 81 ), ExtResource( 79 ) ],
-"loop": true,
-"name": "bike_slow_pace_downward_right",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 52 ), ExtResource( 61 ), ExtResource( 55 ), ExtResource( 49 ) ],
-"loop": true,
-"name": "bike_slow_pace_downward",
-"speed": 5.0
+"name": "longboard_braking_left_downward",
+"speed": 15.0
 }, {
 "frames": [ ExtResource( 188 ), ExtResource( 187 ) ],
 "loop": true,
 "name": "longboard_braking_upward_right",
 "speed": 15.0
 }, {
+"frames": [ ExtResource( 36 ), ExtResource( 35 ), ExtResource( 34 ), ExtResource( 37 ) ],
+"loop": true,
+"name": "foot_run_downward",
+"speed": 8.0
+}, {
+"frames": [ ExtResource( 13 ), ExtResource( 8 ), ExtResource( 17 ), ExtResource( 9 ) ],
+"loop": true,
+"name": "foot_walk_right",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 142 ), ExtResource( 143 ) ],
+"loop": true,
+"name": "bike_backward_right_downward",
+"speed": 3.0
+}, {
+"frames": [ ExtResource( 67 ) ],
+"loop": true,
+"name": "bike_idle_upward_left",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 14 ), ExtResource( 18 ), ExtResource( 10 ), ExtResource( 16 ) ],
+"loop": true,
+"name": "foot_walk_left",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 84 ), ExtResource( 85 ), ExtResource( 83 ), ExtResource( 82 ) ],
+"loop": true,
+"name": "bike_slow_pace_downward_left",
+"speed": 5.0
+}, {
 "frames": [ ExtResource( 179 ), ExtResource( 180 ) ],
 "loop": true,
 "name": "longboard_moving_left_downward",
+"speed": 15.0
+}, {
+"frames": [ ExtResource( 3 ) ],
+"loop": true,
+"name": "foot_idle_upward",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 183 ), ExtResource( 184 ) ],
+"loop": true,
+"name": "longboard_moving_right_upward",
+"speed": 15.0
+}, {
+"frames": [ ExtResource( 175 ), ExtResource( 176 ) ],
+"loop": true,
+"name": "longboard_moving_downward_left",
+"speed": 15.0
+}, {
+"frames": [ ExtResource( 198 ), ExtResource( 197 ) ],
+"loop": true,
+"name": "longboard_braking_right_downward",
+"speed": 15.0
+}, {
+"frames": [ ExtResource( 33 ), ExtResource( 32 ), ExtResource( 22 ), ExtResource( 31 ) ],
+"loop": true,
+"name": "foot_run_upward",
+"speed": 8.0
+}, {
+"frames": [ ExtResource( 185 ), ExtResource( 186 ) ],
+"loop": true,
+"name": "longboard_moving_left_upward",
 "speed": 15.0
 }, {
 "frames": [ ExtResource( 189 ), ExtResource( 190 ) ],
@@ -578,15 +555,30 @@ animations = [ {
 "name": "longboard_braking_upward_left",
 "speed": 15.0
 }, {
-"frames": [ ExtResource( 183 ), ExtResource( 184 ) ],
+"frames": [ ExtResource( 133 ), ExtResource( 132 ) ],
 "loop": true,
-"name": "longboard_moving_right_upward",
-"speed": 15.0
+"name": "bike_backward_upward",
+"speed": 3.0
 }, {
-"frames": [ ExtResource( 185 ), ExtResource( 186 ) ],
+"frames": [ ExtResource( 117 ), ExtResource( 116 ) ],
 "loop": true,
-"name": "longboard_moving_left_upward",
-"speed": 15.0
+"name": "bike_braking_downward_right",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 51 ), ExtResource( 46 ), ExtResource( 60 ), ExtResource( 48 ) ],
+"loop": true,
+"name": "bike_slow_pace_left",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 52 ), ExtResource( 61 ), ExtResource( 55 ), ExtResource( 49 ) ],
+"loop": true,
+"name": "bike_slow_pace_downward",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 44 ) ],
+"loop": true,
+"name": "bike_idle_downward",
+"speed": 5.0
 }, {
 "frames": [ ExtResource( 154 ) ],
 "loop": true,
@@ -598,49 +590,64 @@ animations = [ {
 "name": "bike_slow_pace_right_downward",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 15 ), ExtResource( 6 ), ExtResource( 12 ), ExtResource( 5 ) ],
-"loop": true,
-"name": "foot_walk_downward",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 3 ) ],
-"loop": true,
-"name": "foot_idle_upward",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 33 ), ExtResource( 32 ), ExtResource( 22 ), ExtResource( 31 ) ],
-"loop": true,
-"name": "foot_run_upward",
-"speed": 8.0
-}, {
-"frames": [ ExtResource( 175 ), ExtResource( 176 ) ],
-"loop": true,
-"name": "longboard_moving_downward_left",
-"speed": 15.0
-}, {
 "frames": [ ExtResource( 120 ), ExtResource( 121 ) ],
 "loop": true,
 "name": "bike_braking_upward",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 194 ), ExtResource( 193 ) ],
+"frames": [ ExtResource( 80 ), ExtResource( 78 ), ExtResource( 81 ), ExtResource( 79 ) ],
 "loop": true,
-"name": "longboard_braking_downward_left",
-"speed": 15.0
-}, {
-"frames": [ ExtResource( 198 ), ExtResource( 197 ) ],
-"loop": true,
-"name": "longboard_braking_right_downward",
-"speed": 15.0
+"name": "bike_slow_pace_downward_right",
+"speed": 5.0
 }, {
 "frames": [ ExtResource( 191 ), ExtResource( 192 ) ],
 "loop": true,
 "name": "longboard_braking_downward_right",
 "speed": 15.0
 }, {
-"frames": [ ExtResource( 199 ), ExtResource( 200 ) ],
+"frames": [ ExtResource( 194 ), ExtResource( 193 ) ],
 "loop": true,
-"name": "longboard_braking_left_downward",
+"name": "longboard_braking_downward_left",
+"speed": 15.0
+}, {
+"frames": [ ExtResource( 148 ), ExtResource( 149 ) ],
+"loop": true,
+"name": "bike_backward_left_upward",
+"speed": 3.0
+}, {
+"frames": [ ExtResource( 169 ), ExtResource( 170 ) ],
+"loop": true,
+"name": "longboard_moving_left",
+"speed": 15.0
+}, {
+"frames": [ ExtResource( 178 ), ExtResource( 177 ) ],
+"loop": true,
+"name": "longboard_moving_downward_right",
+"speed": 15.0
+}, {
+"frames": [ ExtResource( 56 ), ExtResource( 59 ), ExtResource( 50 ), ExtResource( 58 ) ],
+"loop": true,
+"name": "bike_slow_pace_right",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 15 ), ExtResource( 6 ), ExtResource( 12 ), ExtResource( 5 ) ],
+"loop": true,
+"name": "foot_walk_downward",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 64 ) ],
+"loop": true,
+"name": "bike_idle_left_up",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 68 ) ],
+"loop": true,
+"name": "bike_idle_downward_right",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 201 ), ExtResource( 202 ) ],
+"loop": true,
+"name": "longboard_braking_left_upward",
 "speed": 15.0
 } ]
 
@@ -656,7 +663,7 @@ zoom = Vector2( 0.2, 0.2 )
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 frames = SubResource( 1 )
-animation = "longboard_braking_left_downward"
+animation = "longboard_braking_left_upward"
 playing = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
