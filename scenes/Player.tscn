@@ -1,4 +1,4 @@
-[gd_scene load_steps=213 format=2]
+[gd_scene load_steps=229 format=2]
 
 [ext_resource path="res://ressources/player/foot/idle/idle_right.png" type="Texture" id=1]
 [ext_resource path="res://ressources/player/foot/idle/idle_left.png" type="Texture" id=2]
@@ -210,6 +210,22 @@
 [ext_resource path="res://ressources/player/longboard/pushing/upward/upward_pushing/upward_pushing8.png" type="Texture" id=208]
 [ext_resource path="res://ressources/player/longboard/pushing/upward/upward_pushing/upward_pushing5.png" type="Texture" id=209]
 [ext_resource path="res://ressources/player/longboard/pushing/upward/upward_pushing/upward_pushing6.png" type="Texture" id=210]
+[ext_resource path="res://ressources/player/longboard/pushing/upward/upward_right_pushing/upward_right_pushing1.png" type="Texture" id=211]
+[ext_resource path="res://ressources/player/longboard/pushing/upward/upward_right_pushing/upward_right_pushing2.png" type="Texture" id=212]
+[ext_resource path="res://ressources/player/longboard/pushing/upward/upward_right_pushing/upward_right_pushing7.png" type="Texture" id=213]
+[ext_resource path="res://ressources/player/longboard/pushing/upward/upward_right_pushing/upward_right_pushing4.png" type="Texture" id=214]
+[ext_resource path="res://ressources/player/longboard/pushing/upward/upward_right_pushing/upward_right_pushing6.png" type="Texture" id=215]
+[ext_resource path="res://ressources/player/longboard/pushing/upward/upward_right_pushing/upward_right_pushing5.png" type="Texture" id=216]
+[ext_resource path="res://ressources/player/longboard/pushing/upward/upward_right_pushing/upward_right_pushing8.png" type="Texture" id=217]
+[ext_resource path="res://ressources/player/longboard/pushing/upward/upward_right_pushing/upward_right_pushing3.png" type="Texture" id=218]
+[ext_resource path="res://ressources/player/longboard/pushing/upward/upward_left_pushing/upward_left_pushing4.png" type="Texture" id=219]
+[ext_resource path="res://ressources/player/longboard/pushing/upward/upward_left_pushing/upward_left_pushing7.png" type="Texture" id=220]
+[ext_resource path="res://ressources/player/longboard/pushing/upward/upward_left_pushing/upward_left_pushing6.png" type="Texture" id=221]
+[ext_resource path="res://ressources/player/longboard/pushing/upward/upward_left_pushing/upward_left_pushing3.png" type="Texture" id=222]
+[ext_resource path="res://ressources/player/longboard/pushing/upward/upward_left_pushing/upward_left_pushing5.png" type="Texture" id=223]
+[ext_resource path="res://ressources/player/longboard/pushing/upward/upward_left_pushing/upward_left_pushing1.png" type="Texture" id=224]
+[ext_resource path="res://ressources/player/longboard/pushing/upward/upward_left_pushing/upward_left_pushing2.png" type="Texture" id=225]
+[ext_resource path="res://ressources/player/longboard/pushing/upward/upward_left_pushing/upward_left_pushing8.png" type="Texture" id=226]
 
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
@@ -658,6 +674,16 @@ animations = [ {
 "name": "longboard_braking_left_upward",
 "speed": 15.0
 }, {
+"frames": [ ExtResource( 224 ), ExtResource( 225 ), ExtResource( 222 ), ExtResource( 219 ), ExtResource( 223 ), ExtResource( 221 ), ExtResource( 220 ), ExtResource( 226 ) ],
+"loop": true,
+"name": "longboard_pushing_upward_left",
+"speed": 15.0
+}, {
+"frames": [ ExtResource( 211 ), ExtResource( 212 ), ExtResource( 218 ), ExtResource( 214 ), ExtResource( 216 ), ExtResource( 215 ), ExtResource( 213 ), ExtResource( 217 ) ],
+"loop": true,
+"name": "longboard_pushing_upward_right",
+"speed": 15.0
+}, {
 "frames": [ ExtResource( 205 ), ExtResource( 203 ), ExtResource( 204 ), ExtResource( 206 ), ExtResource( 209 ), ExtResource( 210 ), ExtResource( 207 ), ExtResource( 208 ) ],
 "loop": true,
 "name": "longboard_pushing_upward",
@@ -676,8 +702,8 @@ zoom = Vector2( 0.2, 0.2 )
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 frames = SubResource( 1 )
-animation = "longboard_pushing_upward"
-frame = 5
+animation = "longboard_pushing_upward_left"
+frame = 1
 playing = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
