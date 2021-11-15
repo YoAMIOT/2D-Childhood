@@ -1,4 +1,4 @@
-[gd_scene load_steps=253 format=2]
+[gd_scene load_steps=277 format=2]
 
 [ext_resource path="res://ressources/player/foot/idle/idle_right.png" type="Texture" id=1]
 [ext_resource path="res://ressources/player/foot/idle/idle_left.png" type="Texture" id=2]
@@ -250,9 +250,38 @@
 [ext_resource path="res://ressources/player/longboard/pushing/downward/downward_left_pushing/downward_left_pushing7.png" type="Texture" id=248]
 [ext_resource path="res://ressources/player/longboard/pushing/downward/downward_left_pushing/downward_left_pushing2.png" type="Texture" id=249]
 [ext_resource path="res://ressources/player/longboard/pushing/downward/downward_left_pushing/downward_left_pushing6.png" type="Texture" id=250]
+[ext_resource path="res://ressources/player/longboard/pushing/right/right_pushing/right_pushing7.png" type="Texture" id=251]
+[ext_resource path="res://ressources/player/longboard/pushing/right/right_pushing/right_pushing5.png" type="Texture" id=252]
+[ext_resource path="res://ressources/player/longboard/pushing/right/right_pushing/right_pushing6.png" type="Texture" id=253]
+[ext_resource path="res://ressources/player/longboard/pushing/right/right_pushing/right_pushing2.png" type="Texture" id=254]
+[ext_resource path="res://ressources/player/longboard/pushing/right/right_pushing/right_pushing4.png" type="Texture" id=255]
+[ext_resource path="res://ressources/player/longboard/pushing/right/right_pushing/right_pushing3.png" type="Texture" id=256]
+[ext_resource path="res://ressources/player/longboard/pushing/right/right_pushing/right_pushing1.png" type="Texture" id=257]
+[ext_resource path="res://ressources/player/longboard/pushing/right/right_pushing/right_pushing8.png" type="Texture" id=258]
+[ext_resource path="res://ressources/player/longboard/pushing/left/left_pushing/left_pushing2.png" type="Texture" id=259]
+[ext_resource path="res://ressources/player/longboard/pushing/left/left_pushing/left_pushing8.png" type="Texture" id=260]
+[ext_resource path="res://ressources/player/longboard/pushing/left/left_pushing/left_pushing3.png" type="Texture" id=261]
+[ext_resource path="res://ressources/player/longboard/pushing/left/left_pushing/left_pushing4.png" type="Texture" id=262]
+[ext_resource path="res://ressources/player/longboard/pushing/left/left_pushing/left_pushing6.png" type="Texture" id=263]
+[ext_resource path="res://ressources/player/longboard/pushing/left/left_pushing/left_pushing5.png" type="Texture" id=264]
+[ext_resource path="res://ressources/player/longboard/pushing/left/left_pushing/left_pushing1.png" type="Texture" id=265]
+[ext_resource path="res://ressources/player/longboard/pushing/left/left_pushing/left_pushing7.png" type="Texture" id=266]
+[ext_resource path="res://ressources/player/longboard/pushing/right/right_upward_pushing/right_upward_pushing3.png" type="Texture" id=267]
+[ext_resource path="res://ressources/player/longboard/pushing/right/right_upward_pushing/right_upward_pushing5.png" type="Texture" id=268]
+[ext_resource path="res://ressources/player/longboard/pushing/right/right_upward_pushing/right_upward_pushing2.png" type="Texture" id=269]
+[ext_resource path="res://ressources/player/longboard/pushing/right/right_upward_pushing/right_upward_pushing6.png" type="Texture" id=270]
+[ext_resource path="res://ressources/player/longboard/pushing/right/right_upward_pushing/right_upward_pushing1.png" type="Texture" id=271]
+[ext_resource path="res://ressources/player/longboard/pushing/right/right_upward_pushing/right_upward_pushing4.png" type="Texture" id=272]
+[ext_resource path="res://ressources/player/longboard/pushing/right/right_upward_pushing/right_upward_pushing7.png" type="Texture" id=273]
+[ext_resource path="res://ressources/player/longboard/pushing/right/right_upward_pushing/right_upward_pushing8.png" type="Texture" id=274]
 
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
+"frames": [ ExtResource( 271 ), ExtResource( 269 ), ExtResource( 267 ), ExtResource( 272 ), ExtResource( 268 ), ExtResource( 270 ), ExtResource( 273 ), ExtResource( 274 ) ],
+"loop": true,
+"name": "longboard_pushing_right_upward",
+"speed": 15.0
+}, {
 "frames": [ ExtResource( 172 ), ExtResource( 171 ) ],
 "loop": true,
 "name": "longboard_moving_upward_right",
@@ -727,6 +756,16 @@ animations = [ {
 "loop": true,
 "name": "longboard_pushing_downward_right",
 "speed": 15.0
+}, {
+"frames": [ ExtResource( 265 ), ExtResource( 259 ), ExtResource( 261 ), ExtResource( 262 ), ExtResource( 264 ), ExtResource( 263 ), ExtResource( 266 ), ExtResource( 260 ) ],
+"loop": true,
+"name": "longboard_pushing_left",
+"speed": 15.0
+}, {
+"frames": [ ExtResource( 257 ), ExtResource( 254 ), ExtResource( 256 ), ExtResource( 255 ), ExtResource( 252 ), ExtResource( 253 ), ExtResource( 251 ), ExtResource( 258 ) ],
+"loop": true,
+"name": "longboard_pushing_right",
+"speed": 15.0
 } ]
 
 [sub_resource type="RectangleShape2D" id=2]
@@ -741,7 +780,8 @@ zoom = Vector2( 0.2, 0.2 )
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 frames = SubResource( 1 )
-animation = "longboard_pushing_downward_left"
+animation = "longboard_pushing_right_upward"
+frame = 3
 playing = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
